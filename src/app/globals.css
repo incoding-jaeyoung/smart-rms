@@ -1,0 +1,489 @@
+/* 프리텐다드 폰트 CDN 로드 (영문 버전) */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+
+/* Tailwind와 외부 라이브러리 먼저 로드 */
+@import 'tailwindcss';
+@import 'tabulator-tables/dist/css/tabulator.min.css';
+
+/* 커스텀 스타일은 나중에 로드 (우선순위 높음) */
+@import '../styles/tabulator.css';
+@import '../styles/modal.css';
+@import '../styles/content.css';
+@import '../styles/form.css';
+
+/* Tailwind 커스텀 테마 */
+@theme {
+  --color-primary: #171a1c;
+  --color-secondary: #d70051;
+}
+
+/* 프리텐다드 폰트 설정 */
+html {
+  font-family: 'Pretendard', 'Inter', sans-serif;
+  min-width: 1920px;
+}
+@media (max-width: 768px) {
+  html {
+    min-width: 100%;
+  }
+}
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: 'Pretendard', 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ant Design 컴포넌트에 프리텐다드 폰트 적용 */
+.ant-layout,
+.ant-typography,
+.ant-btn,
+.ant-input,
+.ant-select,
+.ant-table,
+.ant-menu,
+.ant-tabs,
+.ant-dropdown,
+.ant-modal,
+.ant-drawer,
+.ant-tooltip,
+.ant-popover {
+  font-family: 'Pretendard', 'Inter', sans-serif !important;
+}
+
+.wrapper {
+  @apply min-h-screen max-md:h-auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.ant-layout-header {
+  @apply flex items-center justify-between px-6 bg-white border-b border-gray-200 bg-white z-10 max-md:px-5 h-[70px] max-md:h-15 max-md:justify-center relative;
+  border-bottom: 1px solid #c7cdd1;
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1);
+  h1 {
+    @apply max-md:w-20;
+  }
+
+  .user-menu {
+    @apply flex items-center cursor-pointer bg-gray-100 hover:bg-gray-200 px-2.5 rounded-md h-[42px] flex-none w-60 max-md:hidden;
+    /* border: 1px solid #C7CDD1; */
+    color: #5a6670;
+    &:hover {
+      outline: 1px solid #c7cdd1;
+    }
+    &.ant-dropdown-open {
+      @apply bg-gray-200;
+      outline: 1px solid #c7cdd1;
+    }
+  }
+  .mobile-menu {
+    @apply md:hidden absolute right-5 top-1/2 -translate-y-1/2;
+    button {
+      @apply flex items-center justify-center w-10 h-10 rounded hover:bg-gray-100 transition-colors;
+      &.btn-menu-open {
+        @apply flex;
+      }
+      &.btn-menu-close {
+        @apply hidden;
+      }
+      img {
+        /* @apply w-7.5 h-7.5; */
+      }
+    }
+  }
+}
+.sub-title {
+  @apply font-bold text-base max-md:text-lg;
+}
+.space-line {
+  @apply text-xl mx-0.5;
+  color: #919ba3;
+}
+.rms-dropdown .ant-dropdown-menu {
+  @apply rounded-md p-0;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+  border: 1px solid #5a6670;
+  .ant-dropdown-menu-item {
+    @apply h-12 text-sm bg-white rounded-none;
+    border-bottom: 1px solid #d3d3d3;
+    &:last-child {
+      border-bottom: none;
+    }
+    .anticon {
+      font-size: 18px;
+    }
+    &:hover {
+      background: #d0e7f780;
+    }
+  }
+}
+/* 탭 스타일 */
+.global-tabs {
+  @apply bg-white box-border flex max-md:hidden;
+  border-bottom: 1px solid #d70051;
+  min-height: 41px;
+
+  /* 탭 버튼 */
+  .tab-btn {
+    @apply flex items-center p-2.5 h-10 min-w-50 flex-shrink-0 bg-white pl-1;
+    border-right: 1px solid #c7cdd1;
+    color: #4b5563;
+    &:hover {
+      background: #e5e7eb;
+    }
+
+    &.active {
+      background: #d70051;
+      color: #fff;
+      .drag-handle {
+        color: #fff;
+      }
+      .tab-close {
+        color: #fff;
+        background: transparent;
+      }
+    }
+    /* 탭 라벨 */
+    .tab-label {
+      @apply text-lg font-medium whitespace-nowrap inline-block mr-5;
+      cursor: pointer;
+      /* &:active {
+        cursor: grabbing;
+      } */
+    }
+    /* 탭 닫기 버튼 */
+    .tab-close {
+      @apply w-5 h-5 rounded-sm flex items-center justify-center ml-auto;
+      background-color: #f4f5f6;
+      color: #5a6670;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .drag-handle {
+      @apply w-5 h-5 rounded-sm flex items-center justify-center mr-2;
+      color: #5a6670;
+      cursor: grab;
+    }
+  }
+}
+
+/* 사이드바 스타일 */
+.ant-layout-sider {
+  @apply bg-white overflow-y-auto;
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1);
+  .sidebar-header {
+    @apply flex items-center justify-between px-[25px] border-b border-gray-200 h-15 flex-none sticky top-0 bg-white z-10 md:hidden;
+    .user-menu {
+      @apply flex items-center cursor-pointer flex-none;
+      color: #5a6670;
+    }
+  }
+  .sidebar-menu {
+    color: #171a1c;
+    padding: 10px 0;
+    .ant-menu-submenu-arrow {
+      @apply w-5 h-5 flex items-center justify-center;
+      inset-inline-end: 26px;
+      background: url('/icons/ico-menu-arrow.svg') no-repeat center center;
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+    & > li {
+      @apply w-full;
+    }
+    * {
+      border-radius: 0 !important;
+    }
+    .ant-menu-title-content {
+      @apply font-medium;
+      color: #171a1c;
+    }
+    & > .ant-menu-item {
+      @apply m-0 text-lg !px-5 h-14;
+    }
+    .ant-menu-item-selected {
+      background-color: #f4f5f6;
+    }
+    & > .ant-menu-submenu {
+      .ant-menu-submenu-title {
+        @apply m-0 text-lg !px-5 h-14 w-full;
+      }
+      .ant-menu-sub {
+        @apply bg-white;
+        .ant-menu-item {
+          @apply h-10 font-medium m-0 w-full !pl-[62px];
+          .ant-menu-title-content {
+            color: #5a6670;
+            font-size: 16px;
+          }
+          &.ant-menu-item-selected {
+            background: #f7f7f7;
+            color: #5a6670;
+          }
+        }
+      }
+      &.ant-menu-submenu-open.ant-menu-submenu-inline {
+        .ant-menu-submenu-arrow {
+          transform: translateY(-50%) rotateX(180deg) !important;
+        }
+      }
+    }
+  }
+  .ant-menu-submenu-selected > .ant-menu-submenu-title {
+    color: #171a1c;
+  }
+  .logout-btn-wrap {
+    @apply mt-auto h-[90px] flex items-center flex-none md:hidden;
+    padding: 30px 25px 0 25px;
+    .logout-btn {
+      @apply flex items-center gap-1.5  text-base font-medium;
+      color: #353c40;
+    }
+  }
+
+  .sidebar-footer {
+    @apply absolute bottom-4 left-0 right-0 text-sm flex items-center justify-center;
+    color: #5a6670;
+  }
+}
+/* 컨텐츠 영역 스타일 */
+.ant-layout-content {
+  @apply p-0 flex flex-col flex-grow;
+  background-color: #f4f5f6;
+  color: var(--primary);
+}
+.contents {
+  padding: 20px 40px 40px 40px;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  overflow: auto;
+  min-height: 0;
+}
+.contents-header {
+  @apply flex items-center justify-between min-h-[50px] px-2.5;
+  h2 {
+    @apply text-2xl font-bold flex items-center;
+    &.center-title {
+      @apply h-20 justify-center w-full;
+      font-size: 34px;
+    }
+  }
+}
+.sub-header {
+  @apply h-10 flex items-center justify-between px-[10px] max-md:px-0;
+  + .flex-grow.flex.flex-col {
+    @apply max-md:!mt-0;
+  }
+}
+@media (max-width: 768px) {
+  .contents {
+    @apply px-4 py-5 pb-0;
+  }
+  .contents-header {
+    @apply flex items-center justify-between min-h-0 px-0;
+    h2 {
+      @apply text-2xl font-semibold flex items-center;
+      &.center-title {
+        @apply h-20 justify-center w-full;
+        font-size: 34px;
+      }
+    }
+  }
+}
+/* Button 스타일 */
+/* @layer components { */
+.ant-btn {
+  @apply rounded-md font-medium;
+  transition: all 0.2s;
+  border: 1px solid #919ba3;
+  background: #ffffff;
+  color: #171a1c;
+  &:hover {
+    border-color: #919ba3 !important;
+    background: #f4f5f6 !important;
+    color: #171a1c !important;
+  }
+  &:active {
+    border-color: #171a1c;
+    background: #e5e7eb;
+  }
+  /* Button 크기 */
+  &.ant-btn-default {
+    height: 32px;
+    padding: 4px 16px;
+    font-size: 14px;
+    line-height: 24px;
+  }
+  &.ant-btn-sm {
+    height: 24px;
+    padding: 0 8px;
+    font-size: 12px;
+    line-height: 22px;
+  }
+  &.ant-btn-lg {
+    height: 58px;
+    padding: 6px 20px;
+    font-size: 16px;
+    line-height: 28px;
+    border-radius: 10px;
+    min-width: 140px;
+  }
+  &.btn-modal {
+    height: 48px;
+    border-radius: 10px;
+    padding: 6px 20px;
+    font-size: 16px;
+    line-height: 28px;
+    flex-grow: 1;
+    max-width: 200px;
+    gap: 12px;
+  }
+
+  /* Default 버튼 (type 없음) */
+  &.ant-btn-default {
+    padding: 0 10px;
+    min-width: 100px;
+  }
+
+  /* Primary 버튼 */
+  &.ant-btn-primary {
+    background: #353c40;
+    border-color: #353c40;
+    color: #fff;
+    &:hover {
+      background: #171a1c !important;
+      color: #fff !important;
+    }
+  }
+
+  /* Danger 버튼 */
+  &.ant-btn-dangerous {
+    background-color: #d60051;
+    color: #ffffff;
+    border-color: #d60051;
+    &:hover {
+      background-color: #a3003e !important;
+      border-color: #a3003e !important;
+      color: #ffffff !important;
+    }
+    &:disabled {
+      background-color: #c7cdd1 !important;
+      border-color: #c7cdd1 !important;
+      color: #ffffff !important;
+    }
+  }
+
+  /* Text 버튼 스타일 (보더 없음) */
+  &.ant-btn-text {
+    font-size: 16px;
+    color: #353c40;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    padding: 4px 8px;
+    text-decoration: underline;
+    &:hover {
+      background: transparent !important;
+    }
+  }
+}
+
+/* 모바일 사이드바 스타일 */
+@media (max-width: 768px) {
+  .ant-layout-header {
+    @apply sticky top-0 z-10;
+  }
+  .mobile-sidebar {
+    @apply fixed top-0 left-0 bottom-0 w-full max-w-full z-50;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .mobile-sidebar-open {
+    transform: translateX(0) !important;
+  }
+
+  .mobile-sidebar .ant-layout-sider-children {
+    @apply flex flex-col;
+  }
+
+  .mobile-sidebar .sidebar-menu {
+    @apply p-0;
+    .ant-menu-item,
+    .ant-menu-submenu .ant-menu-submenu-title {
+      @apply !px-6;
+    }
+    .ant-menu-submenu-arrow {
+      @apply w-7 h-7;
+    }
+    .ant-menu-item-only-child {
+      height: 50px !important;
+    }
+  }
+
+  .mobile-sidebar .ant-menu .ant-menu-submenu .ant-menu-sub {
+    @apply bg-white px-[25px];
+  }
+
+  .mobile-sidebar .ant-menu .ant-menu-submenu .ant-menu-sub .ant-menu-item {
+    @apply h-10 font-medium m-0 w-full !px-10;
+    border-radius: 5px !important;
+  }
+
+  .mobile-sidebar .sidebar-footer {
+    @apply !mt-4 relative bottom-0 pb-6;
+  }
+}
+
+.ant-layout-footer {
+  @apply bg-transparent font-medium md:hidden;
+  color: #939393;
+  .mobile-footer {
+    @apply flex items-center justify-between flex-col;
+  }
+}
+
+.menu-line {
+  @apply mt-7.5 mb-4 flex justify-between items-center max-md:hidden;
+}
+
+/* Components Demo Page */
+.demo-section {
+  @apply mb-10;
+}
+
+.demo-title {
+  @apply text-2xl font-bold mb-6 pb-3 border-b-2 border-gray-300;
+  color: #171a1c;
+}
+
+.demo-subtitle {
+  @apply text-lg font-semibold mb-4;
+  color: #353c40;
+}
+
+.demo-block {
+  @apply mb-8 p-6 bg-white rounded-lg border border-gray-200;
+}
+
+.center-container {
+  @apply w-[1400px] max-md:w-full;
+  margin: 0 auto;
+  .contents-header {
+    @apply justify-center;
+  }
+}
+
+/* 물류 센터 css 시작 */
+.ant-modal-mask {
+  @apply pointer-events-none;
+}
+.popup-list {
+  @apply fixed top-5 right-5 z-1001 flex-col gap-3 p-4 flex;
+  background-color: rgba(255, 255, 255, 0.8);
+}

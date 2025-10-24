@@ -1,0 +1,35 @@
+{
+  "name": "daejeon-smart-logistics",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack --port 3002",
+    "build": "next build --turbopack",
+    "start": "next start",
+    "lint": "eslint",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "@ant-design/icons": "^6.1.0",
+    "@types/tabulator-tables": "^6.2.11",
+    "antd": "^5.27.4",
+    "dayjs": "^1.11.18",
+    "next": "15.5.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tabulator-tables": "^6.3.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.4",
+    "prettier": "^3.6.2",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

@@ -1,0 +1,448 @@
+.filter-block {
+  @apply bg-white rounded-lg p-4 mt-3.5;
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1);
+  .filter-header {
+    @apply md:hidden flex items-center justify-between h-15 px-5 text-xl font-semibold;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .filter-form {
+    @apply justify-between flex flex-col md:flex-row;
+  }
+  .filter-submit {
+    @apply flex items-center gap-2;
+    .btn-reset {
+      @apply w-11 h-11 px-0 min-w-0 md:hidden flex-none rounded-lg;
+    }
+  }
+}
+
+/* form 스타일 */
+.ant-form-item {
+  margin-bottom: 0px;
+}
+.ant-input,
+.ant-input-password,
+.ant-picker,
+.ant-select-selector {
+  padding: 5px 14px;
+  border-color: #c7cdd1 !important;
+  &:hover {
+    border-color: #919ba3 !important;
+  }
+  &:focus {
+    border-color: #171a1c !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+}
+
+/* Input Password 내부 input 요소 포커스 제거 */
+.ant-input-password-focused,
+.ant-input-affix-wrapper-focused,
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper:focus-within {
+  border-color: #171a1c !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* DatePicker 포커스 제거 */
+.ant-picker-focused {
+  border-color: #171a1c !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.ant-picker-input {
+  & > input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+
+.ant-select {
+  height: 34px;
+  .ant-select-arrow {
+    @apply flex items-center justify-center w-5 h-5 mt-0 -translate-y-1/2;
+    background: url('/icons/ico-select-arrow.svg') no-repeat center center;
+    span {
+      display: none;
+    }
+  }
+  &:hover {
+    .ant-select-selector {
+      border-color: #919ba3 !important;
+    }
+  }
+  .ant-select-selector {
+    padding: 5px 14px !important;
+    transition: none !important;
+    border: 1px solid #c7cdd1 !important;
+  }
+  &.ant-select-focused {
+    .ant-select-selector {
+      border-color: #171a1c !important;
+      box-shadow: none !important;
+      outline: none !important;
+    }
+    .ant-select-arrow {
+    }
+  }
+  .ant-select-selection-item {
+    @apply text-sm;
+  }
+}
+
+.ant-form-item-label.ant-form-item-label {
+  padding-bottom: 4px;
+}
+
+.ant-form-item-label > label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #171a1c !important;
+  height: auto;
+  padding-left: 6px;
+}
+
+.ant-input.ant-input,
+.ant-input-number.ant-input-number,
+.ant-picker.ant-picker,
+.ant-select-selector.ant-select-selector {
+  /* border-radius: 4px; */
+  border-color: #c7cdd1;
+  transition: border-color 0.2s;
+  &:disabled {
+    border-color: #919ba3 !important;
+    background-color: #f4f5f6;
+    color: #171a1c;
+  }
+}
+
+.ant-input.ant-input:hover,
+.ant-input-number.ant-input-number:hover,
+.ant-picker.ant-picker:hover,
+.ant-select:hover .ant-select-selector.ant-select-selector {
+  border-color: #919ba3;
+}
+
+.ant-input.ant-input:focus,
+.ant-input-number.ant-input-number:focus,
+.ant-picker.ant-picker:focus,
+.ant-select-focused .ant-select-selector.ant-select-selector {
+  border-color: #171a1c;
+  box-shadow: 0 0 0 2px rgba(23, 26, 28, 0.1);
+}
+
+/* 모달 내부 텍스트 영역 */
+.ant-input-textarea textarea.ant-input {
+  border-radius: 4px;
+  border-color: #c7cdd1;
+  transition: border-color 0.2s;
+}
+
+.ant-input-textarea textarea.ant-input:hover {
+  border-color: #919ba3;
+}
+
+.ant-input-textarea textarea.ant-input:focus {
+  border-color: #171a1c;
+  box-shadow: 0 0 0 2px rgba(23, 26, 28, 0.1);
+}
+
+/* Error 상태 스타일 */
+.ant-form-item-has-error {
+  .ant-input,
+  .ant-input-password,
+  .ant-picker,
+  .ant-select-selector {
+    border-color: #ff4d4f !important;
+    &:hover {
+      border-color: #ff4d4f !important;
+    }
+    &:focus {
+      border-color: #ff4d4f !important;
+      box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.1) !important;
+    }
+  }
+
+  /* Input Password 포커스 */
+  .ant-input-password-focused,
+  .ant-input-affix-wrapper-focused,
+  .ant-input-affix-wrapper:focus,
+  .ant-input-affix-wrapper:focus-within {
+    border-color: #ff4d4f !important;
+    box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.1) !important;
+  }
+
+  /* DatePicker 포커스 */
+  .ant-picker-focused {
+    border-color: #ff4d4f !important;
+    box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.1) !important;
+  }
+
+  /* Select 포커스 */
+  .ant-select-focused .ant-select-selector {
+    border-color: #ff4d4f !important;
+    box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.1) !important;
+  }
+
+  /* 에러 메시지 스타일 */
+  .ant-form-item-explain-error {
+    color: #ff4d4f;
+    font-size: 13px;
+    margin-top: 4px;
+  }
+}
+
+/* Warning 상태 스타일 */
+.ant-form-item-has-warning {
+  .ant-input,
+  .ant-input-password,
+  .ant-picker,
+  .ant-select-selector {
+    border-color: #faad14 !important;
+    &:hover {
+      border-color: #faad14 !important;
+    }
+    &:focus {
+      border-color: #faad14 !important;
+      box-shadow: 0 0 0 2px rgba(250, 173, 20, 0.1) !important;
+    }
+  }
+
+  .ant-form-item-explain-warning {
+    color: #faad14;
+    font-size: 13px;
+    margin-top: 4px;
+  }
+}
+
+/* Success 상태 스타일 */
+.ant-form-item-has-success {
+  .ant-input,
+  .ant-input-password,
+  .ant-picker,
+  .ant-select-selector {
+    border-color: #52c41a !important;
+    &:hover {
+      border-color: #52c41a !important;
+    }
+    &:focus {
+      border-color: #52c41a !important;
+      box-shadow: 0 0 0 2px rgba(82, 196, 26, 0.1) !important;
+    }
+  }
+}
+
+/* 모달 내부 라디오/체크박스 */
+.ant-radio-wrapper.ant-radio-wrapper,
+.ant-checkbox-wrapper.ant-checkbox-wrapper {
+  font-size: 14px;
+  color: #353c40;
+}
+
+.ant-radio-checked .ant-radio-inner.ant-radio-inner,
+.ant-checkbox-checked .ant-checkbox-inner.ant-checkbox-inner {
+  background-color: #171a1c;
+  border-color: #171a1c;
+}
+/* Select 드롭다운 옵션 스타일 */
+.ant-select-dropdown {
+  @apply rounded-md shadow-lg p-0;
+  border: 1px solid #171a1c;
+
+  .ant-select-item {
+    @apply p-0 text-sm h-9 flex items-center px-2.5 rounded-none;
+    color: #171a1c;
+    &:hover {
+      background: rgba(208, 231, 247, 0.5) !important;
+    }
+
+    &.ant-select-item-option-selected {
+      @apply bg-white font-medium;
+    }
+
+    &.ant-select-item-option-active {
+      @apply bg-gray-50;
+    }
+  }
+}
+
+.ant-form-item .ant-form-item-control-input {
+  min-height: 0;
+}
+.ant-checkbox-label {
+  color: #353c40 !important;
+  font-weight: 500;
+}
+.ant-checkbox-wrapper {
+}
+
+.ant-checkbox .ant-checkbox-inner {
+  border-color: #5a6670 !important;
+}
+.ant-checkbox-wrapper:hover input[type='checkbox'] + .ant-checkbox-inner {
+  background-color: #353c40 !important;
+  border-color: #353c40 !important;
+}
+.ant-radio-wrapper {
+  margin-inline-end: 20px;
+}
+
+/* 토글 스위치 커스터마이징 */
+.ant-switch {
+  background-color: #d9d9d9 !important;
+  border: none !important;
+}
+
+.ant-switch.ant-switch-checked {
+  background-color: #00bd24 !important; /* 초록색 */
+}
+
+/* 토글 스위치 호버 효과 */
+.ant-switch:hover:not(.ant-switch-disabled) {
+  background-color: #bfbfbf !important;
+}
+
+.ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled) {
+  background-color: #73d13d !important;
+}
+
+.form-block-container {
+  @apply grid grid-cols-4 gap-5 items-start pb-10;
+  min-height: 412px;
+}
+
+.form-block {
+  @apply rounded-lg overflow-hidden transition-all duration-300;
+  border: 1px solid #c7cdd1;
+}
+
+.form-block.active {
+  @apply h-full;
+  .form-block-title {
+    background-color: #e1e4e7;
+    border-bottom: 1px solid #c7cdd1;
+  }
+  .form-block-content {
+    @apply flex;
+  }
+}
+
+.form-block-title {
+  @apply flex items-center justify-between h-9 px-3 font-semibold rounded-b-lg;
+  color: #171a1c;
+  background-color: #f4f5f6;
+}
+
+.form-block-content {
+  @apply text-sm text-gray-600 p-3 flex flex-col gap-3 hidden;
+  .ant-form-item-row {
+    @apply flex items-center justify-between w-full;
+    .ant-form-item-control {
+      @apply !w-30 flex-none;
+    }
+    .ant-form-item-label {
+      @apply flex-shrink-0;
+      padding: 0;
+      label {
+        padding: 0;
+        font-weight: 500;
+        &:after {
+          display: none !important;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  /* 모바일에서 필터 기본 숨김 */
+  .filter-wrap {
+    display: none;
+  }
+
+  /* 모바일에서 필터 보기 버튼만 표시 */
+  .m-filter-container {
+    @apply flex flex-col gap-3;
+    .filter-btn {
+      @apply flex items-center justify-between mt-5;
+      button {
+        height: 40px;
+        span {
+          font-size: 16px;
+        }
+      }
+    }
+    .filter-list {
+      @apply flex flex-wrap gap-2;
+      button {
+        height: 30px;
+      }
+    }
+  }
+
+  /* 필터가 열렸을 때만 표시 */
+  .filter-wrap.show {
+    @apply fixed top-0 left-0 w-full h-full bg-black/50 z-50 flex items-end justify-center;
+    display: flex !important;
+  }
+  .filter-block {
+    @apply flex-col flex rounded-b-none w-full p-0 rounded-t-2xl;
+  }
+  .filter-form {
+    padding: 10px 16px 0px 16px;
+    min-height: 70dvh;
+    max-height: 70dvh;
+    overflow-y: auto;
+  }
+  .filter-form-items {
+    @apply flex-col flex pb-9 !gap-7;
+    max-height: 70dvh;
+    overflow-y: auto;
+  }
+  .ant-space-item {
+    @apply w-full;
+  }
+  .filter-submit {
+    @apply py-4;
+    .btn-apply {
+      @apply h-11 flex-grow;
+    }
+  }
+  input[type='text'],
+  input[type='number'],
+  input[type='date'],
+  input[type='time'],
+  input[type='email'],
+  input[type='password'],
+  input[type='tel'],
+  input[type='url'],
+  input[type='search'] {
+    @apply !py-2.5;
+  }
+  .ant-select-selector {
+    @apply !h-11;
+  }
+
+  .ant-select-arrow {
+    transform: translateY(5px) !important;
+  }
+  .ant-form-item-label > label {
+    @apply text-lg pl-1;
+  }
+  .ant-select .ant-form-item-control-input {
+    @apply !h-11;
+  }
+  .ant-select-dropdown .ant-select-item {
+    @apply !h-11;
+  }
+}
+
+/* 데스크톱에서 필터 보기 버튼 숨김 */
+@media (min-width: 769px) {
+  .m-filter-container {
+    display: none;
+  }
+}

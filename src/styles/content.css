@@ -1,0 +1,8 @@
+/* Login Page */
+.login-page {
+  @apply min-h-screen flex flex-col w-full h-full relative;
+  background: url('/images/bg-login.png') no-repeat center center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
