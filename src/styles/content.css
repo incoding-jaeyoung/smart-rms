@@ -1,8 +1,96 @@
 /* Login Page */
 .login-page {
-  @apply min-h-screen flex flex-col w-full h-full relative;
-  background: url('/images/bg-login.png') no-repeat center center;
+  @apply min-h-screen flex w-full h-full relative;
+}
+.login-movie {
+  @apply absolute top-0 left-0 w-full h-full;
+  background: url('/videos/bg-movie.png') no-repeat center center;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  video {
+    @apply w-full h-full object-cover;
+  }
+}
+.login-wrap {
+  @apply w-full h-dvh relative flex items-center justify-center gap-[105px];
+  width: 1920px;
+  margin: 0 auto;
+  .login-content {
+    @apply text-white font-bold flex flex-col gap-6;
+    width: 985px;
+    padding-bottom: 50px;
+    text-shadow: 0 5px 3px rgba(0, 0, 0, 0.5);
+    h1 {
+      font-size: 78px;
+      line-height: 120%;
+    }
+    p {
+      font-size: 39px;
+      line-height: 110%;
+    }
+  }
+  .login-modal-content {
+    height: 630px;
+    width: 570px;
+    padding: 60px 75px 50px 75px;
+    h2 {
+      @apply h-11 font-bold;
+      font-size: 32px;
+      line-height: 110%;
+    }
+    .text {
+      @apply text-lg font-semibold mb-6;
+    }
+  }
+  .login-footer {
+    @apply absolute flex justify-between items-center bottom-0 left-0 w-full px-25 py-10 text-white font-medium text-xs;
+    p {
+      line-height: 160%;
+    }
+  }
+  .sns-login {
+    @apply flex flex-col items-center justify-center gap-2 mt-7;
+    p {
+      @apply font-semibold;
+    }
+  }
+  .email-signup {
+    @apply flex justify-center mt-5;
+    button {
+      @apply flex items-center justify-center h-[25px] px-7.5;
+      border: 1px solid #000;
+      font-size: 15px;
+    }
+  }
+  .customer-service {
+    @apply flex justify-center mt-5;
+    font-size: 13px;
+  }
+  .ant-btn.login-button {
+    @apply rounded-4xl h-[50px] w-full text-lg mt-6 font-semibold;
+    background-color: #262626;
+  }
+  .login-options {
+    @apply flex items-center justify-between;
+    .remember-checkbox {
+      label {
+        font-size: 15px;
+      }
+      .ant-checkbox-label {
+        padding: 0 5px !important;
+      }
+    }
+    .forgot-password {
+      button {
+        font-size: 15px;
+      }
+    }
+  }
+  .sns-buttons {
+    @apply flex items-center justify-center gap-5;
+  }
+}
+.ant-input-affix-wrapper .ant-input-suffix {
+  margin-right: 5px;
 }

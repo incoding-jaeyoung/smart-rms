@@ -20,7 +20,7 @@
 .ant-form-item {
   margin-bottom: 0px;
 }
-.ant-input,
+/* .ant-input,
 .ant-input-password,
 .ant-picker,
 .ant-select-selector {
@@ -34,7 +34,7 @@
     box-shadow: none !important;
     outline: none !important;
   }
-}
+} */
 
 /* Input Password 내부 input 요소 포커스 제거 */
 .ant-input-password-focused,
@@ -189,9 +189,7 @@
 
   /* 에러 메시지 스타일 */
   .ant-form-item-explain-error {
-    color: #ff4d4f;
-    font-size: 13px;
-    margin-top: 4px;
+    @apply h-5 flex items-center px-4 text-xs;
   }
 }
 
@@ -215,23 +213,6 @@
     color: #faad14;
     font-size: 13px;
     margin-top: 4px;
-  }
-}
-
-/* Success 상태 스타일 */
-.ant-form-item-has-success {
-  .ant-input,
-  .ant-input-password,
-  .ant-picker,
-  .ant-select-selector {
-    border-color: #52c41a !important;
-    &:hover {
-      border-color: #52c41a !important;
-    }
-    &:focus {
-      border-color: #52c41a !important;
-      box-shadow: 0 0 0 2px rgba(82, 196, 26, 0.1) !important;
-    }
   }
 }
 
@@ -357,92 +338,50 @@
   }
 }
 
-@media (max-width: 768px) {
-  /* 모바일에서 필터 기본 숨김 */
-  .filter-wrap {
-    display: none;
+/* Login Page */
+.login-input {
+  .ant-form-item-control-input-content {
+    border-radius: 25px;
   }
-
-  /* 모바일에서 필터 보기 버튼만 표시 */
-  .m-filter-container {
-    @apply flex flex-col gap-3;
-    .filter-btn {
-      @apply flex items-center justify-between mt-5;
-      button {
-        height: 40px;
-        span {
-          font-size: 16px;
-        }
+  .ant-form-item-control-input-content {
+    background: rgba(255, 255, 255, 0.8);
+  }
+  .ant-form-item-control-input-content > .ant-input,
+  .ant-form-item-control-input-content .ant-input-affix-wrapper {
+    border-radius: 25px;
+    /* border: 1px solid #fff; */
+    background: rgba(255, 255, 255, 0);
+    color: #787878;
+    font-weight: 400;
+    font-size: 16px;
+    padding-left: 50px;
+    box-shadow: 1px 4px 4px 0 rgba(0, 0, 0, 0.2) !important;
+    input {
+      background: transparent !important;
+      padding-left: 0px !important;
+      font-size: 16px !important;
+      color: #787878;
+      &::placeholder {
+        color: #575757;
       }
     }
-    .filter-list {
-      @apply flex flex-wrap gap-2;
-      button {
-        height: 30px;
-      }
+  }
+  :where(.css-dev-only-do-not-override-1utvcnp).ant-input-outlined:hover {
+    border: 1px solid #000;
+  }
+  &.id-input {
+    .ant-form-item-control-input-content {
+      background-image: url('/icons/ico-id.svg');
+      background-repeat: no-repeat;
+      background-position: 13px center;
     }
   }
 
-  /* 필터가 열렸을 때만 표시 */
-  .filter-wrap.show {
-    @apply fixed top-0 left-0 w-full h-full bg-black/50 z-50 flex items-end justify-center;
-    display: flex !important;
-  }
-  .filter-block {
-    @apply flex-col flex rounded-b-none w-full p-0 rounded-t-2xl;
-  }
-  .filter-form {
-    padding: 10px 16px 0px 16px;
-    min-height: 70dvh;
-    max-height: 70dvh;
-    overflow-y: auto;
-  }
-  .filter-form-items {
-    @apply flex-col flex pb-9 !gap-7;
-    max-height: 70dvh;
-    overflow-y: auto;
-  }
-  .ant-space-item {
-    @apply w-full;
-  }
-  .filter-submit {
-    @apply py-4;
-    .btn-apply {
-      @apply h-11 flex-grow;
+  &.pw-input {
+    .ant-form-item-control-input-content {
+      background-image: url('/icons/ico-pw.svg');
+      background-repeat: no-repeat;
+      background-position: 13px center;
     }
-  }
-  input[type='text'],
-  input[type='number'],
-  input[type='date'],
-  input[type='time'],
-  input[type='email'],
-  input[type='password'],
-  input[type='tel'],
-  input[type='url'],
-  input[type='search'] {
-    @apply !py-2.5;
-  }
-  .ant-select-selector {
-    @apply !h-11;
-  }
-
-  .ant-select-arrow {
-    transform: translateY(5px) !important;
-  }
-  .ant-form-item-label > label {
-    @apply text-lg pl-1;
-  }
-  .ant-select .ant-form-item-control-input {
-    @apply !h-11;
-  }
-  .ant-select-dropdown .ant-select-item {
-    @apply !h-11;
-  }
-}
-
-/* 데스크톱에서 필터 보기 버튼 숨김 */
-@media (min-width: 769px) {
-  .m-filter-container {
-    display: none;
   }
 }

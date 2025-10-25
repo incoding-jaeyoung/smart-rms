@@ -4,12 +4,12 @@ import { Modal } from '@/components/ui';
 import { Form, Input, Space, Radio, Select } from 'antd';
 import { CheckCircleFilled } from '@ant-design/icons';
 
-interface EditUserProps {
+interface NewUserProps {
   open: boolean;
   onClose: () => void;
 }
 
-export default function EditUser({ open, onClose }: EditUserProps) {
+export default function NewUser({ open, onClose }: NewUserProps) {
   const [form] = Form.useForm();
 
   const handleSubmit = (values: unknown) => {
@@ -22,9 +22,9 @@ export default function EditUser({ open, onClose }: EditUserProps) {
       open={open}
       onCancel={onClose}
       onConfirm={() => form.submit()}
-      title="Edit User Information"
-      size="small"
-      confirmText="Save Changes"
+      title="회원가입"
+      size="default"
+      confirmText="Register"
       cancelText="Cancel"
       confirmIcon={<CheckCircleFilled />}
     >

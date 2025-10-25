@@ -1,6 +1,7 @@
 'use client';
 
 import { Modal as AntModal, ModalProps as AntModalProps, Button } from 'antd';
+import Image from 'next/image';
 import { ReactNode } from 'react';
 
 // 커스텀 모달의 추가 props 타입 정의
@@ -54,7 +55,7 @@ export const Modal: React.FC<CustomModalProps> = ({
       case 'fullscreen':
         return { width: '100vw', height: '100vh', top: 0, margin: 0 };
       default:
-        return { width: 887 };
+        return { width: 570 };
     }
   };
 
@@ -108,13 +109,13 @@ export const Modal: React.FC<CustomModalProps> = ({
     <AntModal
       {...props}
       title={
-        title ? (
-          <div className="flex items-center justify-between w-full">
-            <div className="flex items-center gap-2">
-              <button className="modal-header-btn" onClick={() => {}} title="뒤로가기">
-                ←
-              </button>
-              <div className="flex items-center gap-2.5">
+        <div className="flex items-center justify-between w-full">
+          <div className="flex flex-col gap-7.5 w-full">
+            <button className="modal-header-btn" onClick={onCancel} title="뒤로가기">
+              <Image src="/icons/ico-back.svg" alt="뒤로가기" width={30} height={24} />
+            </button>
+            {title && (
+              <div className="flex items-center w-full gap-2.5">
                 {titleIcon && <span>{titleIcon}</span>}
                 {title.includes('<br>') ? (
                   <div dangerouslySetInnerHTML={{ __html: title }} />
@@ -122,12 +123,12 @@ export const Modal: React.FC<CustomModalProps> = ({
                   <span>{title}</span>
                 )}
               </div>
-              <button className="modal-header-btn" onClick={onCancel} title="닫기">
-                ×
-              </button>
-            </div>
+            )}
+            {/* <button className="modal-header-btn" onClick={onCancel} title="닫기">
+              ×
+            </button> */}
           </div>
-        ) : undefined
+        </div>
       }
       open={props.open}
       onCancel={onCancel}
@@ -141,6 +142,7 @@ export const Modal: React.FC<CustomModalProps> = ({
       centered={variant === 'centered'}
       transitionName={noAnimation ? '' : undefined}
       maskTransitionName={noAnimation ? '' : undefined}
+      // mask={false}
     >
       {children}
     </AntModal>

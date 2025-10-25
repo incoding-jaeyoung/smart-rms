@@ -8,54 +8,64 @@
 
 /* 모달 마스크 (배경 오버레이) */
 .ant-modal-root .ant-modal-mask.ant-modal-mask {
-  background-color: rgba(0, 0, 0, 0.45);
+  /* background-color: rgba(0, 0, 0, 0.45); */
+  background: none;
 }
 
 /* 모달 컨테이너 */
-.ant-modal-root .ant-modal-wrap.ant-modal-wrap {
+.ant-modal-root .ant-modal-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
+  /* pointer-events: none; */
 }
 
 /* 모달 */
-.ant-modal-root .ant-modal.ant-modal {
+.ant-modal-root .ant-modal {
   top: 0;
   padding-bottom: 0;
 }
 
-.ant-modal-root .ant-modal-content.ant-modal-content {
-  border-radius: 20px;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.15);
-  padding: 0;
-  background: transparent;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+.ant-modal-content {
+  border-radius: 50px !important;
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.42) 0%,
+    rgba(235, 235, 235, 0.25) 63.29%,
+    rgba(255, 255, 255, 0.42) 99.38%
+  ) !important;
+  box-shadow: 0 0 17px 2px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
 }
-
+.ant-modal-content::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50px;
+  padding: 2px;
+  background: radial-gradient(
+    267.48% 141.42% at 0% 0%,
+    #fff 0%,
+    rgba(174, 174, 174, 0) 25.48%,
+    rgba(226, 226, 226, 0.2) 76.44%,
+    rgba(255, 255, 255, 0.8) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
 /* 모달 헤더 */
-.ant-modal-root .ant-modal-header.ant-modal-header {
+.ant-modal-root .ant-modal-header {
   padding: 20px 24px;
   display: flex;
-  align-items: center;
-  justify-content: center;
   text-align: center;
-  min-height: 80px;
   /* border-bottom: 1px solid #E1E4E7; */
-  border-radius: 20px 20px 0 0;
   background: none;
   margin-bottom: 0;
-  > div {
-    line-height: normal;
-  }
-}
-
-.ant-modal-root .ant-modal-title {
-  font-size: 24px;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.5;
 }
 
 /* 모달 닫기 버튼 */
@@ -116,17 +126,6 @@
   margin: 0;
 }
 
-/* 모달 variants */
-.custom-modal.centered {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.custom-modal.drawer .ant-modal-content {
-  border-radius: 0;
-  height: 100vh;
-}
 /* 스크롤바 커스터마이징 */
 .ant-modal-body::-webkit-scrollbar {
   width: 6px;
@@ -155,58 +154,13 @@
   grid-template-columns: repeat(2, 1fr);
 }
 
-/* 모달 confirm 버튼 커스터마이징 */
-.ant-modal-confirm .ant-modal-confirm-btns {
-  display: flex;
-  justify-content: flex-end;
-  gap: 8px;
-  margin-top: 24px;
-}
-
 .modal-form-small {
   @apply px-3 pt-5 min-h-[470px];
 }
 
-/* 반응형 - 모바일 */
-@media (max-width: 768px) {
-  .ant-modal {
-    max-width: calc(100vw - 32px);
-    margin: 16px;
-  }
-
-  .ant-modal-content {
-    border-radius: 8px;
-  }
-
-  .ant-modal-header,
-  .ant-modal-body,
-  .ant-modal-footer {
-    padding: 16px;
-  }
-
-  .ant-modal-body {
-    max-height: calc(100vh - 200px);
-  }
-
-  /* 모바일에서 Grid를 1열로 변경 */
-  .ant-modal-body .grid-cols-2 {
-    grid-template-columns: 1fr;
-  }
+.ant-modal-title {
+  @apply w-full;
 }
-
-.ant-modal-root .confirm-modal {
-  .ant-modal-header {
-    padding: 40px;
-    padding-bottom: 0;
-  }
-  .ant-modal-body {
-    padding-top: 30px;
-  }
-}
-.confirm-modal-content {
-  padding: 15px;
-  background-color: #f4f5f6;
-  text-align: center;
-  margin: auto;
-  max-width: 280px;
+.modal-header-btn {
+  @apply inline-flex w-fit cursor-pointer;
 }
