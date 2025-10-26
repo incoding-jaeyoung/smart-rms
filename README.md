@@ -21,6 +21,15 @@
 - 모달 시스템 (다양한 크기 및 스타일 지원)
 - 커스텀 Tabulator 테이블 컴포넌트
 - 한국어 UI 지원 (Ant Design 한국어 locale)
+- 반응형 디자인 (모바일/데스크톱 지원)
+
+### 🔐 인증 시스템
+
+- **로그인 페이지**: 비디오 배경과 모달 기반 로그인
+- **계정 찾기**: 아이디 찾기 / 비밀번호 변경 탭 기능
+- **회원가입**: 이메일 기반 회원가입 모달
+- **SNS 로그인**: 카카오톡, 네이버 연동 지원
+- **비밀번호 관리**: 비밀번호 변경 및 재설정
 
 ### 📊 대시보드
 
@@ -28,10 +37,18 @@
 - 그룹별 필터링
 - 재고 및 오류 코드 추적
 
-### 🔐 사용자 관리
+### 🎨 컴포넌트 데모
+
+- **폼 컴포넌트**: 다양한 상태의 입력 필드 (정상/에러/비활성화)
+- **버튼 컴포넌트**: 다양한 타입과 크기의 버튼
+- **모달 컴포넌트**: 계정 관련 모달들 (아이디 찾기, 회원가입 등)
+- **삭제 버튼**: 입력 필드 내 삭제 기능
+
+### 🔧 사용자 관리
 
 - 비밀번호 변경
 - 역할 기반 접근 제어
+- 사용자 정보 수정
 
 ## 🛠️ 설치 및 실행
 
@@ -92,34 +109,57 @@ docker-compose build --no-cache
 daejeon-smart-logistics/
 ├── src/
 │   ├── app/                    # Next.js App Router 페이지
-│   │   ├── dashboard/          # 대시보드
-│   │   ├── modal-basic/        # 모달 예제
-│   │   ├── table-examples/     # 테이블 예제
+│   │   ├── components-demo/    # 컴포넌트 데모 페이지
+│   │   ├── layout/             # 레이아웃 데모 페이지
+│   │   ├── log-in/             # 로그인 페이지
+│   │   ├── modal-basic/        # 모달 예제 페이지
+│   │   ├── table-examples/     # 테이블 예제 페이지
 │   │   ├── globals.css         # 전역 스타일
 │   │   ├── layout.tsx          # 루트 레이아웃
-│   │   └── page.tsx            # 홈 페이지
+│   │   ├── page.tsx            # 홈 페이지
+│   │   └── favicon.ico         # 파비콘
 │   ├── components/
 │   │   ├── layout/             # 레이아웃 컴포넌트
-│   │   │   ├── AppLayout.tsx   # 메인 레이아웃
-│   │   │   └── Header.tsx      # 헤더
+│   │   │   ├── Header.tsx      # 헤더
+│   │   │   └── LoginWrap.tsx   # 로그인 래퍼
 │   │   ├── popup/              # 모달 컴포넌트
-│   │   │   ├── ChangePassword.tsx
-│   │   │   └── ModalDefault.tsx
-│   │   └── ui/                 # 공통 UI 컴포넌트
-│   │       ├── Modal.tsx       # 모달 래퍼
-│   │       └── TabulatorTable.tsx # Tabulator 테이블
+│   │   │   ├── FindAccount.tsx # 계정 찾기
+│   │   │   ├── JoinUser.tsx    # 회원가입
+│   │   │   ├── SearchSuccess.tsx # 아이디 찾기 결과
+│   │   │   ├── PwChangeSuccess.tsx # 비밀번호 변경 성공
+│   │   │   └── ModalDefault.tsx # 기본 모달
+│   │   ├── ui/                 # 공통 UI 컴포넌트
+│   │   │   ├── Modal.tsx       # 모달 래퍼
+│   │   │   ├── Icon.tsx        # 아이콘 컴포넌트
+│   │   │   ├── TabulatorTable.tsx # Tabulator 테이블
+│   │   │   ├── index.ts        # UI 컴포넌트 export
+│   │   │   └── TabulatorTable.md # 테이블 문서
+│   │   └── AntdWarningFilter.tsx # Ant Design 경고 필터
 │   ├── hooks/
 │   │   └── useFilter.ts        # 커스텀 훅
 │   ├── lib/
 │   │   └── antd.ts             # Ant Design 설정 (한국어 locale)
 │   ├── styles/                 # CSS 모듈
 │   │   ├── modal.css           # 모달 스타일
+│   │   ├── form.css            # 폼 스타일
+│   │   ├── content.css         # 컨텐츠 스타일
 │   │   └── tabulator.css       # Tabulator 스타일
 │   └── config/
-│       └── pages.ts            # 페이지 설정
+│       ├── pages.ts            # 페이지 설정
+│       └── menuConfig.ts       # 메뉴 설정
 ├── public/
 │   ├── icons/                  # SVG 아이콘
-│   └── images/                 # 이미지
+│   │   ├── ico-*.svg           # 각종 아이콘들
+│   │   ├── Ribbon.png          # 리본 이미지
+│   │   ├── menu/               # 메뉴 아이콘
+│   │   └── README.md           # 아이콘 설명
+│   ├── images/                 # 이미지
+│   │   ├── bg-login*.png       # 로그인 배경
+│   │   ├── img-*.png           # 각종 이미지
+│   │   └── logo.svg            # 로고
+│   └── videos/                 # 비디오 (로그인 배경)
+│       ├── bg-movie.mp4        # 배경 비디오
+│       └── bg-movie.png        # 비디오 썸네일
 ├── Dockerfile                  # Docker 설정
 ├── docker-compose.yml          # Docker Compose 설정
 └── package.json                # 의존성 및 스크립트
@@ -186,6 +226,41 @@ npm run format:check
 - `style`: 스타일 변경
 - `refactor`: 코드 리팩토링
 - `docs`: 문서 수정
+
+## 🆕 최신 업데이트
+
+### v1.2.0 (2024-12-19)
+
+#### ✨ 새로운 기능
+
+- **로그인 시스템 완전 개편**
+  - 비디오 배경과 모달 기반 로그인 UI
+  - 아이디 찾기 / 비밀번호 변경 탭 기능
+  - SNS 로그인 지원 (카카오톡, 네이버)
+  - 회원가입 모달 시스템
+
+- **컴포넌트 데모 페이지**
+  - 다양한 상태의 폼 컴포넌트 (정상/에러/비활성화)
+  - 입력 필드 삭제 버튼 기능
+  - 버튼 컴포넌트 다양한 타입과 크기
+
+- **모달 시스템 개선**
+  - 계정 찾기 결과 모달
+  - 비밀번호 변경 성공 모달
+  - 그라데이션 테두리와 블러 효과
+
+#### 🔧 개선사항
+
+- 폼 컴포넌트 CSS 스타일링 개선
+- 반응형 디자인 최적화
+- TypeScript 타입 안정성 향상
+- 코드 구조 개선 및 리팩토링
+
+#### 🐛 버그 수정
+
+- Form Item name 충돌 해결
+- useState와 initialValues 동기화
+- 모달 렌더링 최적화
 
 ## 🐛 알려진 이슈
 

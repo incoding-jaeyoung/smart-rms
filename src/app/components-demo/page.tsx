@@ -13,8 +13,15 @@ import {
 import Image from 'next/image';
 export default function ComponentsDemoPage() {
   const [form] = Form.useForm();
-  const [id, setId] = useState();
-  const [password, setPassword] = useState();
+  const [normalId, setNormalId] = useState('');
+  const [helpId, setHelpId] = useState('');
+  const [disabledId, setDisabledId] = useState('');
+  const [errorId, setErrorId] = useState('');
+  const [errorHelpId, setErrorHelpId] = useState('');
+  const [normalPassword, setNormalPassword] = useState('');
+  const [helpPassword, setHelpPassword] = useState('');
+  const [errorPassword, setErrorPassword] = useState('');
+  const [errorHelpPassword, setErrorHelpPassword] = useState('');
   const handleSubmit = (values: unknown) => {
     console.log('Form values:', values);
   };
@@ -112,26 +119,36 @@ export default function ComponentsDemoPage() {
           form={form}
           layout="vertical"
           onFinish={handleSubmit}
-          initialValues={{ id: 'hongkildong123', password: 'password123' }}
+          initialValues={{
+            normalId: '',
+            helpId: '',
+            disabledId: '',
+            errorId: '',
+            errorHelpId: '',
+            normalPassword: '',
+            helpPassword: '',
+            errorPassword: '',
+            errorHelpPassword: '',
+          }}
         >
           {/* Input */}
           <div className="demo-block">
             <h4 className="demo-subtitle">Input</h4>
             <Space direction="vertical" style={{ width: '500px' }} size="large">
-              <Form.Item name="id" className="login-input">
+              <Form.Item name="normalId" className="login-input">
                 <Input
                   placeholder="아이디 입력"
-                  value={id}
-                  onChange={(e) => setId(e.target.value)}
+                  value={normalId}
+                  onChange={(e) => setNormalId(e.target.value)}
                   className="success"
                   suffix={
                     <button
                       type="button"
                       onClick={() => {
-                        setId('');
-                        form.resetFields(['id']);
+                        setNormalId('');
+                        form.resetFields(['normalId']);
                       }}
-                      className={`${!id ? 'opacity-0 pointer-events-none' : ''}`}
+                      className={`${!normalId ? 'opacity-0 pointer-events-none' : ''}`}
                       title="삭제"
                     >
                       <Image src="/icons/ico-del-form.svg" alt="삭제" width={20} height={20} />
@@ -139,20 +156,20 @@ export default function ComponentsDemoPage() {
                   }
                 />
               </Form.Item>
-              <Form.Item name="id" className="login-input" help="아이디를 입력해주세요.">
+              <Form.Item name="helpId" className="login-input" help="아이디를 입력해주세요.">
                 <Input
                   placeholder="아이디 입력"
-                  value={id}
-                  onChange={(e) => setId(e.target.value)}
+                  value={helpId}
+                  onChange={(e) => setHelpId(e.target.value)}
                   className="success"
                   suffix={
                     <button
                       type="button"
                       onClick={() => {
-                        setId('');
-                        form.resetFields(['id']);
+                        setHelpId('');
+                        form.resetFields(['helpId']);
                       }}
-                      className={`${!id ? 'opacity-0 pointer-events-none' : ''}`}
+                      className={`${!helpId ? 'opacity-0 pointer-events-none' : ''}`}
                       title="삭제"
                     >
                       <Image src="/icons/ico-del-form.svg" alt="삭제" width={20} height={20} />
@@ -160,20 +177,20 @@ export default function ComponentsDemoPage() {
                   }
                 />
               </Form.Item>
-              <Form.Item name="id" className="login-input">
+              <Form.Item name="disabledId" className="login-input">
                 <Input
                   placeholder="아이디 입력"
-                  value={id}
-                  onChange={(e) => setId(e.target.value)}
+                  value={disabledId}
+                  onChange={(e) => setDisabledId(e.target.value)}
                   className="success"
                   suffix={
                     <button
                       type="button"
                       onClick={() => {
-                        setId('');
-                        form.resetFields(['id']);
+                        setDisabledId('');
+                        form.resetFields(['disabledId']);
                       }}
-                      className={`${!id ? 'opacity-0 pointer-events-none' : ''}`}
+                      className={`${!disabledId ? 'opacity-0 pointer-events-none' : ''}`}
                       title="삭제"
                     >
                       <Image src="/icons/ico-del-form.svg" alt="삭제" width={20} height={20} />
@@ -182,20 +199,20 @@ export default function ComponentsDemoPage() {
                   disabled
                 />
               </Form.Item>
-              <Form.Item name="id" className="login-input" validateStatus="error">
+              <Form.Item name="errorId" className="login-input" validateStatus="error">
                 <Input
                   placeholder="아이디 입력"
-                  value={id}
-                  onChange={(e) => setId(e.target.value)}
+                  value={errorId}
+                  onChange={(e) => setErrorId(e.target.value)}
                   className="success"
                   suffix={
                     <button
                       type="button"
                       onClick={() => {
-                        setId('');
-                        form.resetFields(['id']);
+                        setErrorId('');
+                        form.resetFields(['errorId']);
                       }}
-                      className={`${!id ? 'opacity-0 pointer-events-none' : ''}`}
+                      className={`${!errorId ? 'opacity-0 pointer-events-none' : ''}`}
                       title="삭제"
                     >
                       <Image src="/icons/ico-del-form.svg" alt="삭제" width={20} height={20} />
@@ -204,24 +221,24 @@ export default function ComponentsDemoPage() {
                 />
               </Form.Item>
               <Form.Item
-                name="id"
+                name="errorHelpId"
                 className="login-input"
                 validateStatus="error"
                 help="아이디를 입력해주세요."
               >
                 <Input
                   placeholder="아이디 입력"
-                  value={id}
-                  onChange={(e) => setId(e.target.value)}
+                  value={errorHelpId}
+                  onChange={(e) => setErrorHelpId(e.target.value)}
                   className="success"
                   suffix={
                     <button
                       type="button"
                       onClick={() => {
-                        setId('');
-                        form.resetFields(['id']);
+                        setErrorHelpId('');
+                        form.resetFields(['errorHelpId']);
                       }}
-                      className={`${!id ? 'opacity-0 pointer-events-none' : ''}`}
+                      className={`${!errorHelpId ? 'opacity-0 pointer-events-none' : ''}`}
                       title="삭제"
                     >
                       <Image src="/icons/ico-del-form.svg" alt="삭제" width={20} height={20} />
@@ -234,19 +251,19 @@ export default function ComponentsDemoPage() {
           <div className="demo-block">
             <h4 className="demo-subtitle">Input Password</h4>
             <Space direction="vertical" style={{ width: '500px' }} size="large">
-              <Form.Item name="password" className="login-input ">
+              <Form.Item name="normalPassword" className="login-input ">
                 <Input.Password
                   placeholder="비밀번호"
                   size="large"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={normalPassword}
+                  onChange={(e) => setNormalPassword(e.target.value)}
                   suffix={
-                    password && (
+                    normalPassword && (
                       <button
                         type="button"
                         onClick={() => {
-                          setPassword('');
-                          form.resetFields(['password']);
+                          setNormalPassword('');
+                          form.resetFields(['normalPassword']);
                         }}
                       >
                         <Image src="/icons/ico-del-form.svg" alt="삭제" width={20} height={20} />
@@ -256,22 +273,22 @@ export default function ComponentsDemoPage() {
                 />
               </Form.Item>
               <Form.Item
-                name="password"
+                name="helpPassword"
                 help="최대 13자, 대문자 1자 포함, 특수기호 !@#$%^&*()_+-=, 연속된숫자 3자 이상 금지"
                 className="login-input "
               >
                 <Input.Password
                   placeholder="비밀번호"
                   size="large"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={helpPassword}
+                  onChange={(e) => setHelpPassword(e.target.value)}
                   suffix={
-                    password && (
+                    helpPassword && (
                       <button
                         type="button"
                         onClick={() => {
-                          setPassword('');
-                          form.resetFields(['password']);
+                          setHelpPassword('');
+                          form.resetFields(['helpPassword']);
                         }}
                       >
                         <Image src="/icons/ico-del-form.svg" alt="삭제" width={20} height={20} />
@@ -280,19 +297,19 @@ export default function ComponentsDemoPage() {
                   }
                 />
               </Form.Item>
-              <Form.Item name="password" className="login-input " validateStatus="error">
+              <Form.Item name="errorPassword" className="login-input " validateStatus="error">
                 <Input.Password
                   placeholder="비밀번호"
                   size="large"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={errorPassword}
+                  onChange={(e) => setErrorPassword(e.target.value)}
                   suffix={
-                    password && (
+                    errorPassword && (
                       <button
                         type="button"
                         onClick={() => {
-                          setPassword('');
-                          form.resetFields(['password']);
+                          setErrorPassword('');
+                          form.resetFields(['errorPassword']);
                         }}
                       >
                         <Image src="/icons/ico-del-form.svg" alt="삭제" width={20} height={20} />
@@ -302,7 +319,7 @@ export default function ComponentsDemoPage() {
                 />
               </Form.Item>
               <Form.Item
-                name="password"
+                name="errorHelpPassword"
                 validateStatus="error"
                 help="최대 13자, 대문자 1자 포함, 특수기호 !@#$%^&*()_+-=, 연속된숫자 3자 이상 금지"
                 className="login-input "
@@ -310,15 +327,15 @@ export default function ComponentsDemoPage() {
                 <Input.Password
                   placeholder="비밀번호"
                   size="large"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={errorHelpPassword}
+                  onChange={(e) => setErrorHelpPassword(e.target.value)}
                   suffix={
-                    password && (
+                    errorHelpPassword && (
                       <button
                         type="button"
                         onClick={() => {
-                          setPassword('');
-                          form.resetFields(['password']);
+                          setErrorHelpPassword('');
+                          form.resetFields(['errorHelpPassword']);
                         }}
                       >
                         <Image src="/icons/ico-del-form.svg" alt="삭제" width={20} height={20} />
