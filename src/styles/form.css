@@ -429,3 +429,6 @@
     color: #171a1c !important;
   }
 }
+:where(.css-1utvcnp).ant-input-outlined:hover {
+  border-color: #000 !important;
+}
