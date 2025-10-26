@@ -50,7 +50,7 @@ const PAGE_DATA = [
     description: '',
     path: '/log-in',
     status: 'completed' as const,
-    screenId: 'DSLS1000',
+    screenId: '',
     message: '',
   },
 ];

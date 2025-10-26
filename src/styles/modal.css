@@ -25,7 +25,9 @@
   top: 0;
   padding-bottom: 0;
 }
-
+.ant-modal .ant-modal-content {
+  padding: 20px;
+}
 .ant-modal-content {
   border-radius: 50px !important;
   position: relative;
@@ -60,7 +62,6 @@
 }
 /* 모달 헤더 */
 .ant-modal-root .ant-modal-header {
-  padding: 20px 24px;
   display: flex;
   text-align: center;
   /* border-bottom: 1px solid #E1E4E7; */
@@ -100,19 +101,10 @@
 
 /* 모달 바디 */
 .ant-modal-root .ant-modal-body.ant-modal-body {
-  padding: 40px;
-  font-size: 14px;
-  line-height: 1.6;
-  color: #353c40;
-  max-height: calc(100vh - 300px);
-  overflow-y: auto;
 }
 
 /* 모달 푸터 */
 .ant-modal-root .ant-modal-footer.ant-modal-footer {
-  padding: 40px 30px 30px 30px;
-  /* border-top: 1px solid #E1E4E7; */
-  border-radius: 0 0 20px 20px;
   margin: 0;
   display: flex;
   justify-content: center;

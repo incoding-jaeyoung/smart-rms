@@ -19,6 +19,7 @@
 /* form 스타일 */
 .ant-form-item {
   margin-bottom: 0px;
+  margin-top: 2px;
 }
 /* .ant-input,
 .ant-input-password,
@@ -188,9 +189,15 @@
   }
 
   /* 에러 메시지 스타일 */
-  .ant-form-item-explain-error {
-    @apply h-5 flex items-center px-4 text-xs;
-  }
+  /* .ant-form-item-explain-error {
+    @apply ;
+  } */
+}
+:where(.css-dev-only-do-not-override-1utvcnp).ant-form-item .ant-form-item-explain,
+:where(.css-dev-only-do-not-override-1utvcnp).ant-form-item .ant-form-item-extra {
+  @apply flex items-center px-4 text-xs mt-1;
+  color: #363636;
+  letter-spacing: -0.5px;
 }
 
 /* Warning 상태 스타일 */
@@ -340,21 +347,22 @@
 
 /* Login Page */
 .login-input {
+  @apply h-[65px];
   .ant-form-item-control-input-content {
     border-radius: 25px;
-  }
-  .ant-form-item-control-input-content {
     background: rgba(255, 255, 255, 0.8);
+  }
+  .ant-input-affix-wrapper {
+    @apply h-[45px];
   }
   .ant-form-item-control-input-content > .ant-input,
   .ant-form-item-control-input-content .ant-input-affix-wrapper {
     border-radius: 25px;
-    /* border: 1px solid #fff; */
     background: rgba(255, 255, 255, 0);
     color: #787878;
     font-weight: 400;
     font-size: 16px;
-    padding-left: 50px;
+    padding-left: 15px;
     box-shadow: 1px 4px 4px 0 rgba(0, 0, 0, 0.2) !important;
     input {
       background: transparent !important;
@@ -369,11 +377,28 @@
   :where(.css-dev-only-do-not-override-1utvcnp).ant-input-outlined:hover {
     border: 1px solid #000;
   }
+  :where(.css-dev-only-do-not-override-1utvcnp).ant-input-outlined.ant-input-status-error:not(
+      .ant-input-disabled
+    ):hover {
+    background: transparent;
+  }
+  :where(.css-dev-only-do-not-override-1utvcnp).ant-input-outlined.ant-input-status-error:not(
+      .ant-input-disabled
+    ):focus,
+  :where(.css-dev-only-do-not-override-1utvcnp).ant-input-outlined.ant-input-status-error:not(
+      .ant-input-disabled
+    ):focus-within {
+    background: transparent;
+  }
   &.id-input {
     .ant-form-item-control-input-content {
       background-image: url('/icons/ico-id.svg');
       background-repeat: no-repeat;
       background-position: 13px center;
+    }
+    .ant-form-item-control-input-content > .ant-input,
+    .ant-form-item-control-input-content > .ant-input-affix-wrapper {
+      padding-left: 50px;
     }
   }
 
@@ -383,5 +408,24 @@
       background-repeat: no-repeat;
       background-position: 13px center;
     }
+    .ant-form-item-control-input-content > .ant-input,
+    .ant-form-item-control-input-content > .ant-input-affix-wrapper {
+      padding-left: 50px;
+    }
+  }
+  .ant-form-item-control-input-content .ant-input-affix-wrapper-disabled {
+    background-color: rgba(204, 204, 204, 0.8) !important;
+    border-color: #fff !important;
+    background-image: url('/icons/ico-success.svg');
+    background-repeat: no-repeat;
+    background-position: right 13px center;
+  }
+}
+
+.ant-btn.ant-btn-link {
+  @apply text-sm p-0;
+  color: #363636;
+  &:hover {
+    color: #171a1c !important;
   }
 }

@@ -22,11 +22,10 @@ export default function NewUser({ open, onClose }: NewUserProps) {
       open={open}
       onCancel={onClose}
       onConfirm={() => form.submit()}
-      title="회원가입"
+      title=""
       size="default"
-      confirmText="Register"
-      cancelText="Cancel"
-      confirmIcon={<CheckCircleFilled />}
+      showFooter={false}
+      className="account-modal"
     >
       <Form form={form} layout="vertical" onFinish={handleSubmit}>
         <Space direction="vertical" size={20} className="w-full modal-form-small">

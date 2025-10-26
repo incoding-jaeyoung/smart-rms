@@ -10,10 +10,11 @@ import {
   DownloadOutlined,
   CheckCircleFilled,
 } from '@ant-design/icons';
-
+import Image from 'next/image';
 export default function ComponentsDemoPage() {
   const [form] = Form.useForm();
-
+  const [id, setId] = useState();
+  const [password, setPassword] = useState();
   const handleSubmit = (values: unknown) => {
     console.log('Form values:', values);
   };
@@ -38,13 +39,16 @@ export default function ComponentsDemoPage() {
         <div className="demo-block">
           <h4 className="demo-subtitle">Button Sizes</h4>
           <Space wrap align="center">
-            <Button type="primary" size="large">
+            <Button type="primary" size="large" className="!w-50">
               Large
             </Button>
-            <Button type="primary" size="middle">
+            <Button type="primary" size="large" className="!w-50" disabled>
+              Large
+            </Button>
+            <Button type="primary" size="middle" className="!w-50">
               Middle
             </Button>
-            <Button type="primary" size="small">
+            <Button type="primary" size="small" className="!w-50">
               Small
             </Button>
           </Space>
@@ -98,46 +102,230 @@ export default function ComponentsDemoPage() {
             </Button>
           </Space>
         </div>
-
-        {/* Block 버튼 */}
-        <div className="demo-block">
-          <h4 className="demo-subtitle">Block Button</h4>
-          <Button type="primary" block>
-            Block Button
-          </Button>
-        </div>
       </section>
 
       {/* 폼 섹션 */}
       <section className="demo-section">
         <h3 className="demo-title">Form Components</h3>
 
-        <Form form={form} layout="vertical" onFinish={handleSubmit}>
+        <Form
+          form={form}
+          layout="vertical"
+          onFinish={handleSubmit}
+          initialValues={{ id: 'hongkildong123', password: 'password123' }}
+        >
           {/* Input */}
           <div className="demo-block">
             <h4 className="demo-subtitle">Input</h4>
-            <Space direction="vertical" style={{ width: '100%' }} size="large">
-              <Form.Item name="normalInput" label="Normal Input" className="w-[400px]">
-                <Input placeholder="Enter text" />
+            <Space direction="vertical" style={{ width: '500px' }} size="large">
+              <Form.Item name="id" className="login-input">
+                <Input
+                  placeholder="아이디 입력"
+                  value={id}
+                  onChange={(e) => setId(e.target.value)}
+                  className="success"
+                  suffix={
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setId('');
+                        form.resetFields(['id']);
+                      }}
+                      className={`${!id ? 'opacity-0 pointer-events-none' : ''}`}
+                      title="삭제"
+                    >
+                      <Image src="/icons/ico-del-form.svg" alt="삭제" width={20} height={20} />
+                    </button>
+                  }
+                />
               </Form.Item>
-
-              <Form.Item
-                name="disabledInput"
-                label="Disabled Input"
-                initialValue="Disabled value"
-                className="w-[400px]"
-              >
-                <Input placeholder="Enter text" disabled />
+              <Form.Item name="id" className="login-input" help="아이디를 입력해주세요.">
+                <Input
+                  placeholder="아이디 입력"
+                  value={id}
+                  onChange={(e) => setId(e.target.value)}
+                  className="success"
+                  suffix={
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setId('');
+                        form.resetFields(['id']);
+                      }}
+                      className={`${!id ? 'opacity-0 pointer-events-none' : ''}`}
+                      title="삭제"
+                    >
+                      <Image src="/icons/ico-del-form.svg" alt="삭제" width={20} height={20} />
+                    </button>
+                  }
+                />
               </Form.Item>
-
+              <Form.Item name="id" className="login-input">
+                <Input
+                  placeholder="아이디 입력"
+                  value={id}
+                  onChange={(e) => setId(e.target.value)}
+                  className="success"
+                  suffix={
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setId('');
+                        form.resetFields(['id']);
+                      }}
+                      className={`${!id ? 'opacity-0 pointer-events-none' : ''}`}
+                      title="삭제"
+                    >
+                      <Image src="/icons/ico-del-form.svg" alt="삭제" width={20} height={20} />
+                    </button>
+                  }
+                  disabled
+                />
+              </Form.Item>
+              <Form.Item name="id" className="login-input" validateStatus="error">
+                <Input
+                  placeholder="아이디 입력"
+                  value={id}
+                  onChange={(e) => setId(e.target.value)}
+                  className="success"
+                  suffix={
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setId('');
+                        form.resetFields(['id']);
+                      }}
+                      className={`${!id ? 'opacity-0 pointer-events-none' : ''}`}
+                      title="삭제"
+                    >
+                      <Image src="/icons/ico-del-form.svg" alt="삭제" width={20} height={20} />
+                    </button>
+                  }
+                />
+              </Form.Item>
               <Form.Item
-                name="errorInput"
-                label="Input with Error"
-                className="w-[400px]"
+                name="id"
+                className="login-input"
                 validateStatus="error"
-                help="This field is required"
+                help="아이디를 입력해주세요."
               >
-                <Input placeholder="Enter text" />
+                <Input
+                  placeholder="아이디 입력"
+                  value={id}
+                  onChange={(e) => setId(e.target.value)}
+                  className="success"
+                  suffix={
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setId('');
+                        form.resetFields(['id']);
+                      }}
+                      className={`${!id ? 'opacity-0 pointer-events-none' : ''}`}
+                      title="삭제"
+                    >
+                      <Image src="/icons/ico-del-form.svg" alt="삭제" width={20} height={20} />
+                    </button>
+                  }
+                />
+              </Form.Item>
+            </Space>
+          </div>
+          <div className="demo-block">
+            <h4 className="demo-subtitle">Input Password</h4>
+            <Space direction="vertical" style={{ width: '500px' }} size="large">
+              <Form.Item name="password" className="login-input ">
+                <Input.Password
+                  placeholder="비밀번호"
+                  size="large"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  suffix={
+                    password && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setPassword('');
+                          form.resetFields(['password']);
+                        }}
+                      >
+                        <Image src="/icons/ico-del-form.svg" alt="삭제" width={20} height={20} />
+                      </button>
+                    )
+                  }
+                />
+              </Form.Item>
+              <Form.Item
+                name="password"
+                help="최대 13자, 대문자 1자 포함, 특수기호 !@#$%^&*()_+-=, 연속된숫자 3자 이상 금지"
+                className="login-input "
+              >
+                <Input.Password
+                  placeholder="비밀번호"
+                  size="large"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  suffix={
+                    password && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setPassword('');
+                          form.resetFields(['password']);
+                        }}
+                      >
+                        <Image src="/icons/ico-del-form.svg" alt="삭제" width={20} height={20} />
+                      </button>
+                    )
+                  }
+                />
+              </Form.Item>
+              <Form.Item name="password" className="login-input " validateStatus="error">
+                <Input.Password
+                  placeholder="비밀번호"
+                  size="large"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  suffix={
+                    password && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setPassword('');
+                          form.resetFields(['password']);
+                        }}
+                      >
+                        <Image src="/icons/ico-del-form.svg" alt="삭제" width={20} height={20} />
+                      </button>
+                    )
+                  }
+                />
+              </Form.Item>
+              <Form.Item
+                name="password"
+                validateStatus="error"
+                help="최대 13자, 대문자 1자 포함, 특수기호 !@#$%^&*()_+-=, 연속된숫자 3자 이상 금지"
+                className="login-input "
+              >
+                <Input.Password
+                  placeholder="비밀번호"
+                  size="large"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  suffix={
+                    password && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setPassword('');
+                          form.resetFields(['password']);
+                        }}
+                      >
+                        <Image src="/icons/ico-del-form.svg" alt="삭제" width={20} height={20} />
+                      </button>
+                    )
+                  }
+                />
               </Form.Item>
             </Space>
           </div>
@@ -295,18 +483,6 @@ export default function ComponentsDemoPage() {
               >
                 <DatePicker style={{ width: '100%' }} />
               </Form.Item>
-            </Space>
-          </div>
-
-          {/* Submit Buttons */}
-          <div className="demo-block">
-            <h4 className="demo-subtitle">Form Actions</h4>
-            <Space>
-              <Button type="primary" htmlType="submit" icon={<CheckCircleFilled />}>
-                Submit
-              </Button>
-              <Button htmlType="reset">Reset</Button>
-              <Button>Cancel</Button>
             </Space>
           </div>
         </Form>

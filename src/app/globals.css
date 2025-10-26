@@ -104,7 +104,6 @@ button {
   }
   /* Button 크기 */
   &.ant-btn-default {
-    height: 32px;
     padding: 4px 16px;
     font-size: 14px;
     line-height: 24px;
@@ -116,12 +115,7 @@ button {
     line-height: 22px;
   }
   &.ant-btn-lg {
-    height: 58px;
-    padding: 6px 20px;
-    font-size: 16px;
-    line-height: 28px;
-    border-radius: 10px;
-    min-width: 140px;
+    @apply rounded-4xl h-[50px] w-full text-lg font-semibold;
   }
   &.btn-modal {
     height: 48px;
@@ -142,12 +136,18 @@ button {
 
   /* Primary 버튼 */
   &.ant-btn-primary {
-    background: #353c40;
-    border-color: #353c40;
+    background: #262626;
+    border-color: #262626;
     color: #fff;
+    box-shadow: 1px 4px 3px 0 rgba(0, 0, 0, 0.1);
     &:hover {
       background: #171a1c !important;
       color: #fff !important;
+    }
+    &:disabled {
+      background-color: #757575 !important;
+      border-color: #757575 !important;
+      color: #ffffff !important;
     }
   }
 
@@ -185,4 +185,32 @@ button {
 .popup-list {
   @apply fixed top-5 right-5 z-1001 flex-col gap-3 p-4 flex;
   background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* 폼 컴포넌트 스타일 */
+
+/* 삭제 버튼 */
+.login-input .ant-input-suffix button {
+  @apply text-gray-400 hover:text-gray-600 transition-colors p-1;
+}
+
+.login-input .ant-input-suffix button:hover {
+  @apply bg-gray-100 rounded;
+}
+
+/* 데모 페이지 스타일 */
+.demo-section {
+  @apply mb-8;
+}
+
+.demo-title {
+  @apply text-2xl font-bold mb-6 text-gray-800;
+}
+
+.demo-subtitle {
+  @apply text-lg font-semibold mb-4 text-gray-700;
+}
+
+.demo-block {
+  @apply mb-6 p-4 bg-gray-50 rounded-lg;
 }

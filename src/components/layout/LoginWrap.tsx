@@ -5,16 +5,13 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 interface LoginProps {
-  children?: React.ReactNode;
-  handleResetPassword: () => void;
+  handleFindAccount: () => void;
 }
 
-export default function Login({ children, handleResetPassword }: LoginProps) {
+export default function Login({ handleFindAccount }: LoginProps) {
   const [form] = Form.useForm();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
-  console.log('Login component rendered'); // 디버깅용
 
   const handleSubmit = (values: unknown) => {
     console.log('Form values:', values);
@@ -39,11 +36,10 @@ export default function Login({ children, handleResetPassword }: LoginProps) {
                 name="username"
                 // validateStatus="error"
                 // help="아이디를 입력해주세요."
-                className="login-input id-input h-[65px]"
+                className="login-input id-input"
               >
                 <Input
                   placeholder="아이디"
-                  className="h-[45px]"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   suffix={
@@ -53,7 +49,7 @@ export default function Login({ children, handleResetPassword }: LoginProps) {
                         setUsername('');
                         form.resetFields(['username']);
                       }}
-                      className={`text-gray-400 hover:text-gray-600 transition-colors ${!username ? 'opacity-0 pointer-events-none' : ''}`}
+                      className={`${!username ? 'opacity-0 pointer-events-none' : ''}`}
                       title="삭제"
                     >
                       <Image src="/icons/ico-del-form.svg" alt="삭제" width={20} height={20} />
@@ -67,12 +63,11 @@ export default function Login({ children, handleResetPassword }: LoginProps) {
                 name="password"
                 // validateStatus="error"
                 // help="비밀번호를 입력해주세요."
-                className="login-input pw-input h-[65px]"
+                className="login-input pw-input !mt-1"
               >
                 <Input.Password
                   placeholder="비밀번호"
                   size="large"
-                  className="h-[45px]"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   suffix={
@@ -97,7 +92,7 @@ export default function Login({ children, handleResetPassword }: LoginProps) {
                   <Checkbox>아이디 기억하기</Checkbox>
                 </Form.Item>
                 <div className="forgot-password">
-                  <Button type="text" size="small" onClick={handleResetPassword}>
+                  <Button type="text" size="small" onClick={handleFindAccount}>
                     아이디 | 비밀번호를 잊으셨나요?
                   </Button>
                 </div>
@@ -105,7 +100,7 @@ export default function Login({ children, handleResetPassword }: LoginProps) {
 
               {/* 로그인 버튼 */}
               <Form.Item>
-                <Button type="primary" htmlType="submit" className="login-button">
+                <Button type="primary" size="large" htmlType="submit" className="login-button">
                   Login
                 </Button>
               </Form.Item>
@@ -114,11 +109,17 @@ export default function Login({ children, handleResetPassword }: LoginProps) {
             <div className="sns-login">
               <p>SNS계정으로 간편 로그인/회원가입</p>
               <div className="sns-buttons">
-                <button type="button" className="kakao-button">
-                  <img src="/icons/ico-naver.svg" alt="네이버" />
+                <button type="button" className="last-login">
+                  <Image src="/icons/ico-naver.svg" alt="네이버" width={50} height={50} />
+                  <span>
+                    <Image src="/icons/Ribbon.png" alt="최근로그인" width={80} height={36} />
+                  </span>
                 </button>
-                <button type="button" className="naver-button">
-                  <img src="/icons/ico-kakao.svg" alt="카카오톡" />
+                <button type="button">
+                  <Image src="/icons/ico-kakao.svg" alt="카카오톡" width={50} height={50} />
+                  <span>
+                    <Image src="/icons/Ribbon.png" alt="최근로그인" width={80} height={36} />
+                  </span>
                 </button>
               </div>
             </div>

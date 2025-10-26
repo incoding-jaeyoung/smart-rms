@@ -110,7 +110,7 @@ export const Modal: React.FC<CustomModalProps> = ({
       {...props}
       title={
         <div className="flex items-center justify-between w-full">
-          <div className="flex flex-col gap-7.5 w-full">
+          <div className="flex flex-col gap-7.5 w-full mb-7.5">
             <button className="modal-header-btn" onClick={onCancel} title="뒤로가기">
               <Image src="/icons/ico-back.svg" alt="뒤로가기" width={30} height={24} />
             </button>

@@ -89,8 +89,92 @@
   }
   .sns-buttons {
     @apply flex items-center justify-center gap-5;
+    & > button {
+      @apply relative;
+      span {
+        @apply absolute hidden;
+        font-size: 15px;
+        right: 12px;
+        top: -5px;
+        z-index: 1;
+        color: #fff;
+        img {
+          max-width: 80px !important;
+        }
+      }
+      &.last-login {
+        span {
+          display: block;
+        }
+      }
+    }
   }
 }
 .ant-input-affix-wrapper .ant-input-suffix {
   margin-right: 5px;
+}
+
+.account-modal {
+  .ant-modal-content {
+    @apply flex flex-col;
+    width: 570px;
+    min-height: 810px;
+    padding: 35px 75px 50px 75px;
+    .ant-modal-body {
+      @apply flex-1 flex flex-col;
+      .ant-form {
+        @apply mt-7.5 flex flex-col flex-grow;
+        /* height: 520px; */
+      }
+    }
+  }
+}
+
+.tab-buttons {
+  @apply flex justify-between items-center gap-[5px];
+  .ant-btn {
+    @apply h-[45px] rounded-4xl flex-1 !text-base !p-0;
+    border: none;
+    box-shadow: 1px 4px 3px 0 rgba(0, 0, 0, 0.1);
+    &.ant-btn-default {
+      color: #808080 !important;
+      background: rgba(230, 230, 230, 0.9);
+    }
+  }
+}
+
+.user-id {
+  @apply flex flex-col items-center justify-center;
+  height: 500px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.75);
+  dl {
+    @apply flex flex-col items-center justify-center  gap-2.5;
+    dt {
+      @apply font-semibold;
+      font-size: 25px;
+    }
+    dd {
+      @apply text-base;
+    }
+  }
+}
+.bottom-msg {
+  @apply flex items-center gap-1 justify-center mt-2 min-h-6;
+  font-size: 15px;
+  .ant-btn.ant-btn-text {
+    @apply p-0 h-auto;
+    font-size: 15px;
+    color: #363636;
+  }
+}
+.code-group {
+  @apply relative;
+  .ant-form-item-control-input {
+    @apply pr-[140px];
+  }
+}
+
+.text-reset {
+  @apply text-center text-2xl font-semibold;
 }
