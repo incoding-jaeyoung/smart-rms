@@ -199,6 +199,12 @@
   color: #363636;
   letter-spacing: -0.5px;
 }
+.ant-form-item .ant-form-item-explain {
+  color: #363636;
+  .ant-form-item-explain-error {
+    color: #f00;
+  }
+}
 
 /* Warning 상태 스타일 */
 .ant-form-item-has-warning {
