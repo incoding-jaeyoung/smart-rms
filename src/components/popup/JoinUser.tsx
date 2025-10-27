@@ -27,7 +27,7 @@ export default function NewUser({ open, onClose }: NewUserProps) {
       showFooter={false}
       className="account-modal"
     >
-      <Form form={form} layout="vertical" onFinish={handleSubmit}>
+      {/* <Form form={form} layout="vertical" onFinish={handleSubmit}>
         <Space direction="vertical" size={20} className="w-full modal-form-small">
           <div className="w-full flex justify-between gap-4">
             <Form.Item name="group" label="Group" className="w-full">
@@ -75,7 +75,7 @@ export default function NewUser({ open, onClose }: NewUserProps) {
             </Form.Item>
           </div>
         </Space>
-      </Form>
+      </Form> */}
     </Modal>
   );
 }
