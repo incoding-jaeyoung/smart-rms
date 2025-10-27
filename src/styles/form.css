@@ -201,6 +201,7 @@
 }
 .ant-form-item .ant-form-item-explain {
   color: #363636;
+  font-size: 12px !important;
   .ant-form-item-explain-error {
     color: #f00;
   }
