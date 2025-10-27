@@ -193,14 +193,16 @@
     @apply ;
   } */
 }
-:where(.css-dev-only-do-not-override-1utvcnp).ant-form-item .ant-form-item-explain,
-:where(.css-dev-only-do-not-override-1utvcnp).ant-form-item .ant-form-item-extra {
+.ant-form-item .ant-form-item-explain,
+.ant-form-item .ant-form-item-extra {
   @apply flex items-center !px-4 !text-xs !mt-1;
   color: #363636;
   letter-spacing: -0.5px !important;
 }
 .ant-form-item .ant-form-item-explain {
   color: #363636;
+  margin-top: 4px !important;
+  padding: 0 16px !important;
   font-size: 12px !important;
   .ant-form-item-explain-error {
     color: #f00;
