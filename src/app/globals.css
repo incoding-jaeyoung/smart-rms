@@ -180,6 +180,78 @@ button {
       background: transparent !important;
     }
   }
+  &.tiny {
+    font-size: 15px !important;
+    font-weight: 400 !important;
+  }
+}
+
+/* 셀렉트 커스텀 */
+.ant-select {
+  height: 45px !important;
+  line-height: 35px;
+
+  .ant-select-selector {
+    box-shadow: 1px 4px 4px 0 rgba(0, 0, 0, 0.2) !important;
+    border-radius: 25px !important;
+  }
+  .ant-select-selection-item {
+    font-size: 16px !important;
+    color: #575757 !important;
+  }
+  .ant-select-selection-placeholder {
+    font-size: 16px !important;
+    color: #575757 !important;
+  }
+  .ant-select-arrow {
+    transform: scaleX(0.7);
+    right: 15px;
+  }
+  &.ant-select-open {
+    .ant-select-arrow {
+      transform: rotate(180deg) scaleX(0.7);
+    }
+  }
+}
+
+.ant-select-dropdown {
+  border-radius: 25px !important;
+  border: none;
+  box-shadow: 1px 4px 4px 0 rgba(0, 0, 0, 0.2) !important;
+  .rc-virtual-list-holder-inner {
+    padding: 5px !important;
+  }
+  .ant-select-item {
+    box-sizing: border-box;
+    color: #575757 !important;
+    height: 40px;
+    border-radius: 20px;
+    &:not(:first-child) {
+      margin-top: 5px;
+    }
+    &:hover,
+    &.ant-select-item-option-active {
+      background-color: rgba(204, 204, 204, 0.8) !important;
+    }
+  }
+}
+
+.ant-checkbox-wrapper {
+  .ant-checkbox-inner {
+    background-color: #fff !important;
+    &:after {
+      width: 8px !important;
+      height: 8px !important;
+      background-color: #000 !important;
+      border: none !important;
+      transform: none !important;
+      top: 4px !important;
+    }
+  }
+  &:hover input[type='checkbox'] + .ant-checkbox-inner {
+    background-color: #fff !important;
+    border-color: #fff !important;
+  }
 }
 
 .popup-list {

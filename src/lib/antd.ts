@@ -13,6 +13,12 @@ export const antdConfig = {
       colorPrimary: '#1890ff',
       borderRadius: 6,
     },
+    components: {
+      Modal: {
+        motionDurationMid: '0s',
+        motionDurationSlow: '0s',
+      },
+    },
   },
 };
 

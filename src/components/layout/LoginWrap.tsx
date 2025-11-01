@@ -131,6 +131,17 @@ export default function Login({ handleFindAccount }: LoginProps) {
             <div className="customer-service">
               <p>로그인에 문제가 있으신가요? 고객센터 070-4132-6116</p>
             </div>
+            {/* 회원가입 성공 */}
+            <div className="join-success">
+              <Image
+                className="mr-2"
+                src="/icons/ico-join-success.svg"
+                alt="성공"
+                width={24}
+                height={24}
+              />
+              회원가입이 완료되었습니다.
+            </div>
           </div>
         </div>
       </div>

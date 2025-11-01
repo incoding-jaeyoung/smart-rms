@@ -1,16 +1,19 @@
 'use client';
 
+import { useState } from 'react';
 import { Modal } from '@/components/ui';
-import { Form, Input, Space, Radio, Select } from 'antd';
-import { CheckCircleFilled } from '@ant-design/icons';
+import { Form, Input, Select, Button } from 'antd';
 
-interface NewUserProps {
+interface JoinUserProps {
   open: boolean;
   onClose: () => void;
 }
 
-export default function NewUser({ open, onClose }: NewUserProps) {
+export default function JoinUser({ open, onClose }: JoinUserProps) {
   const [form] = Form.useForm();
+  const [num, setNum] = useState('');
+  const [act, setAct] = useState('');
+  const [enterNum, setEnterNum] = useState(false);
 
   const handleSubmit = (values: unknown) => {
     console.log('Form values:', values);
@@ -27,55 +30,60 @@ export default function NewUser({ open, onClose }: NewUserProps) {
       showFooter={false}
       className="account-modal"
     >
-      {/* <Form form={form} layout="vertical" onFinish={handleSubmit}>
-        <Space direction="vertical" size={20} className="w-full modal-form-small">
-          <div className="w-full flex justify-between gap-4">
-            <Form.Item name="group" label="Group" className="w-full">
-              <Select placeholder="">
-                <Select.Option value="">select</Select.Option>
-              </Select>
+      <div className="flex-grow flex flex-col">
+        <Form
+          form={form}
+          layout="vertical"
+          onFinish={handleSubmit}
+          initialValues={{ num: '', act: undefined }}
+          className="login-input no-margin"
+        >
+          <div className="flex flex-row justify-center mb-5">
+            <Form.Item
+              name="num"
+              className="w-288"
+              //validateStatus="error" 벨리데이션 실패 시
+            >
+              <Input
+                placeholder="사업자번호 입력 (필수)"
+                value={num}
+                onChange={(e) => setNum(e.target.value)}
+                className="success"
+                suffix={<></>}
+                disabled={enterNum}
+              />
             </Form.Item>
-            <Form.Item name="branch" label="Branch" className="w-full">
-              <Select placeholder="">
-                <Select.Option value="">select1</Select.Option>
-              </Select>
-            </Form.Item>
+            <Button
+              className="ml-1 tiny"
+              type="primary"
+              size="large"
+              onClick={() => setEnterNum(true)}
+              disabled={!num || enterNum}
+            >
+              번호확인
+            </Button>
           </div>
-          <Form.Item name="userName" label="User Name">
-            <Input placeholder="" />
+
+          <Form.Item name="act" className="w-full">
+            <Select placeholder="역할 선택 (필수)" onChange={(value) => setAct(value)}>
+              <Select.Option value="1">화주(OWNER)</Select.Option>
+              <Select.Option value="2">일반사용자 (공유사용자)</Select.Option>
+            </Select>
           </Form.Item>
-          <Form.Item name="userStatus" label="User Status">
-            <Radio.Group>
-              <Radio value="enable">Enable</Radio>
-              <Radio value="disable">Disable</Radio>
-            </Radio.Group>
-          </Form.Item>
-          <div className="w-full flex justify-between gap-4">
-            <Form.Item name="firstName" label="First Name" className="w-full">
-              <Select placeholder="">
-                <Select.Option value="">select</Select.Option>
-              </Select>
-            </Form.Item>
-            <Form.Item name="lastName" label="Last Name" className="w-full">
-              <Select placeholder="">
-                <Select.Option value="">select1</Select.Option>
-              </Select>
-            </Form.Item>
+
+          <div className="err-msg">
+            사업자등록번호가 올바르지 않습니다. 다시 입력해 주시기 바랍니다.
           </div>
-          <div className="w-full flex justify-between gap-4">
-            <Form.Item name="phoneNumber" label="Phone Number" className="w-full">
-              <Select placeholder="">
-                <Select.Option value="">select</Select.Option>
-              </Select>
-            </Form.Item>
-            <Form.Item name="email" label="Email" className="w-full">
-              <Select placeholder="">
-                <Select.Option value="">select1</Select.Option>
-              </Select>
-            </Form.Item>
-          </div>
-        </Space>
-      </Form> */}
+        </Form>
+
+        <Button type="primary" size="large">
+          다음단계 <img className="ml-1" src="/icons/ico-arrow-right.svg" />
+        </Button>
+
+        <p className="bottom-msg">
+          이미 계정이 있으신가요? <Button type="text">로그인</Button>
+        </p>
+      </div>
     </Modal>
   );
 }

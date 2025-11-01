@@ -379,6 +379,8 @@
       font-size: 16px !important;
       color: #787878;
       line-height: 35px;
+      outline: none;
+      border: none;
       &::placeholder {
         color: #575757;
       }
@@ -429,6 +431,16 @@
     background-image: url('/icons/ico-success.svg');
     background-repeat: no-repeat;
     background-position: right 13px center;
+    transition: none;
+  }
+  .ant-form-item-control-input-content .ant-input-affix-wrapper-disabled.no-icon {
+    background-image: none;
+  }
+  .err-msg {
+    color: #ff0000;
+    font-size: 12px;
+    font-weight: 400;
+    margin: 5px 0 0 15px;
   }
 }
 
