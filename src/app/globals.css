@@ -254,7 +254,6 @@ button {
   }
   &:hover input[type='checkbox'] + .ant-checkbox-inner {
     background-color: #fff !important;
-    border-color: #fff !important;
   }
 }
 
