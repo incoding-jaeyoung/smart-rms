@@ -91,10 +91,10 @@ export default function LoginPage() {
           회원가입 - step1
         </Button>
         <Button type="primary" onClick={handleJoinUser1}>
-          회원가입 이메일 - step2
+          회원가입 - 이메일
         </Button>
         <Button type="primary" onClick={handleJoinUser2}>
-          회원가입 sns - step2
+          회원가입 - sns
         </Button>
         <Button type="primary" onClick={handleJoinAgree1}>
           회원가입 - 이용약관
