@@ -82,7 +82,8 @@ export default function FindAccount({ open, onClose }: FindAccountProps) {
             <Form.Item
               name="name"
               className="login-input"
-              // validateStatus="error"
+              validateStatus="error"
+              help="해당 사용자의 아이디를 찾을 수 없습니다."
             >
               <Input
                 placeholder="이름"
@@ -103,9 +104,6 @@ export default function FindAccount({ open, onClose }: FindAccountProps) {
                 }
               />
             </Form.Item>
-            <p className="text-xs text-red-500 text-center">
-              해당 사용자의 아이디를 찾을 수 없습니다.
-            </p>
             <Form.Item className="!mt-auto">
               <Button type="primary" size="large" htmlType="submit" disabled>
                 확인
