@@ -28,7 +28,7 @@
       text-shadow: 0px 5px 3px 0px #00000080;
     }
     p {
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 400;
       line-height: 110%;
       text-shadow: 0px 3px 2px 0px #00000080;
@@ -206,7 +206,8 @@
 
 .code-restart,
 .code-restart * {
-  @apply text-center mt-1 text-black;
+  @apply text-center text-black ml-1;
+  margin-top: 2px;
   font-size: 13px;
 }
 

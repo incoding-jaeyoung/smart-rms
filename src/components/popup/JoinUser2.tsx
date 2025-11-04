@@ -197,7 +197,7 @@ export default function JoinUser2({ type, open, onClose }: JoinUser2Props) {
           )}
         </Form>
 
-        <ul className="agree-con mb-4">
+        <ul className="agree-con mb-3">
           <li>
             <Form.Item name="terms" valuePropName="terms">
               <Checkbox>이용약관 및 개인정보 처리방침에 동의합니다. (필수)</Checkbox>

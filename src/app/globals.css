@@ -267,6 +267,14 @@ button {
 
 /* 폼 컴포넌트 스타일 */
 
+.ant-input-password .ant-input-suffix {
+  flex-direction: row-reverse;
+  .ant-input-password-icon {
+    margin-right: 0 !important;
+    margin-left: 2px !important;
+  }
+}
+
 /* 삭제 버튼 */
 .login-input .ant-input-suffix button {
   @apply text-gray-400 hover:text-gray-600 transition-colors p-1;
