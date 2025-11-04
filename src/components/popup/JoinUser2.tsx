@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { Modal } from '@/components/ui';
-import { Form, Input, Button, Image, Checkbox } from 'antd';
+import { Form, Input, Button, Checkbox } from 'antd';
+import Image from 'next/image';
 
 interface JoinUser2Props {
   open: boolean;
@@ -203,7 +204,7 @@ export default function JoinUser2({ type, open, onClose }: JoinUser2Props) {
               <Checkbox>이용약관 및 개인정보 처리방침에 동의합니다. (필수)</Checkbox>
             </Form.Item>
             <Button type="text">
-              <Image src="/icons/ico-arrow-right2.svg" alt="보기" preview={false} />
+              <Image src="/icons/ico-arrow-right2.svg" alt="보기" width={20} height={20} />
             </Button>
           </li>
           <li>
@@ -211,7 +212,7 @@ export default function JoinUser2({ type, open, onClose }: JoinUser2Props) {
               <Checkbox>서비스 알람 수신에 동의합니다.(선택)</Checkbox>
             </Form.Item>
             <Button type="text">
-              <Image src="/icons/ico-arrow-right2.svg" alt="보기" preview={false} />
+              <Image src="/icons/ico-arrow-right2.svg" alt="보기" width={20} height={20} />
             </Button>
           </li>
         </ul>
