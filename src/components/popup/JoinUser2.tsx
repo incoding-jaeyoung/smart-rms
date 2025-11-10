@@ -200,17 +200,13 @@ export default function JoinUser2({ type, open, onClose }: JoinUser2Props) {
 
         <ul className="agree-con mb-3">
           <li>
-            <Form.Item name="terms" valuePropName="terms">
-              <Checkbox>이용약관 및 개인정보 처리방침에 동의합니다. (필수)</Checkbox>
-            </Form.Item>
+            <Checkbox>이용약관 및 개인정보 처리방침에 동의합니다. (필수)</Checkbox>
             <Button type="text">
               <Image src="/icons/ico-arrow-right2.svg" alt="보기" width={20} height={20} />
             </Button>
           </li>
           <li>
-            <Form.Item name="alarm" valuePropName="alarm">
-              <Checkbox>서비스 알람 수신에 동의합니다.(선택)</Checkbox>
-            </Form.Item>
+            <Checkbox>서비스 알람 수신에 동의합니다.(선택)</Checkbox>
             <Button type="text">
               <Image src="/icons/ico-arrow-right2.svg" alt="보기" width={20} height={20} />
             </Button>
