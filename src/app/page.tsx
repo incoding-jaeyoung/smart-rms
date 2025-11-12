@@ -192,6 +192,10 @@ export default function HomePage() {
             <dt className="text-sm font-bold text-gray-900">2025/11/00</dt>
             <dd className="text-gray-700">- 대전스마트물류센터 프로젝트</dd>
           </dl>
+          <dl className="text-gray-600 flex flex-col gap-1">
+            <dt className="text-sm font-bold text-gray-900">2025/11/12</dt>
+            <dd className="text-gray-700">- 대쉬보드 테스트</dd>
+          </dl>
         </div>
       </div>
     </div>
