@@ -23,6 +23,7 @@ interface CustomModalProps extends Omit<AntModalProps, 'footer'> {
   cancelIcon?: ReactNode; // 취소 버튼 아이콘
   titleIcon?: ReactNode; // 제목 아이콘
   noAnimation?: boolean; // 애니메이션 제거
+  showHeader?: boolean; // 헤더 표시 여부
 }
 
 // 커스텀 모달 컴포넌트
@@ -43,15 +44,18 @@ export const Modal: React.FC<CustomModalProps> = ({
   cancelIcon,
   titleIcon,
   noAnimation = false,
+  showHeader = true,
   ...props
 }) => {
+  const { style: customStyle, width: customWidth, ...restProps } = props;
+
   // 모달 크기 설정
   const getModalSize = () => {
     switch (size) {
       case 'small':
         return { width: 500 };
       case 'large':
-        return { width: 1260 };
+        return { width: 1180 };
       case 'fullscreen':
         return { width: '100vw', height: '100vh', top: 0, margin: 0 };
       default:
@@ -105,36 +109,43 @@ export const Modal: React.FC<CustomModalProps> = ({
     );
   };
 
+  const sizeStyle = getModalStyle() ?? {};
+  const { width: sizeWidth, ...sizeStyleWithoutWidth } = sizeStyle as {
+    width?: number;
+    [key: string]: unknown;
+  };
+  const resolvedWidth = customWidth ?? sizeWidth;
+  const mergedStyle = { ...sizeStyleWithoutWidth, ...customStyle };
+
   return (
     <AntModal
-      {...props}
+      {...restProps}
       title={
-        <div className="flex items-center justify-between w-full">
-          <div className="flex flex-col gap-7.5 w-full mb-7.5">
-            <button className="modal-header-btn" onClick={onCancel} title="뒤로가기">
-              <Image src="/icons/ico-back.svg" alt="뒤로가기" width={30} height={24} />
-            </button>
-            {title && (
-              <div className="flex items-center w-full gap-2.5">
-                {titleIcon && <span>{titleIcon}</span>}
-                {title.includes('<br>') ? (
-                  <div dangerouslySetInnerHTML={{ __html: title }} />
-                ) : (
-                  <span>{title}</span>
-                )}
-              </div>
-            )}
-            {/* <button className="modal-header-btn" onClick={onCancel} title="닫기">
-              ×
-            </button> */}
+        showHeader ? (
+          <div className="flex items-center justify-between w-full">
+            <div className="flex flex-col gap-7.5 w-full mb-7.5">
+              <button className="modal-header-btn" onClick={onCancel} title="뒤로가기">
+                <Image src="/icons/ico-back.svg" alt="뒤로가기" width={30} height={24} />
+              </button>
+              {title && (
+                <div className="flex items-center w-full gap-2.5">
+                  {titleIcon && <span>{titleIcon}</span>}
+                  {title.includes('<br>') ? (
+                    <div dangerouslySetInnerHTML={{ __html: title }} />
+                  ) : (
+                    <span>{title}</span>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
-        </div>
+        ) : null
       }
       open={props.open}
       onCancel={onCancel}
       footer={renderFooter()}
-      width={getModalSize().width}
-      style={getModalStyle()}
+      width={resolvedWidth}
+      style={mergedStyle}
       className={`custom-modal ${variant} ${className}`}
       destroyOnHidden={true}
       maskClosable={false}

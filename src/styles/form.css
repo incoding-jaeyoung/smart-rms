@@ -460,3 +460,21 @@
 .ant-input-outlined:hover {
   border-color: #000 !important;
 }
+
+.ant-input.input-content {
+  @apply text-base;
+  height: 45px;
+  border-radius: 25px;
+  border: 1px solid #fff;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 1px 4px 4px 0 rgba(0, 0, 0, 0.2);
+  &::placeholder {
+    color: #787878;
+  }
+  &.input-search {
+    padding-left: 50px;
+    background-image: url('/icons/ico-search.svg');
+    background-repeat: no-repeat;
+    background-position: 13px center;
+  }
+}

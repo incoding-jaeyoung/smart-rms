@@ -117,6 +117,8 @@ button {
     font-size: 12px;
     line-height: 22px;
   }
+  &.ant-btn-middle {
+  }
   &.ant-btn-lg {
     @apply rounded-4xl h-[50px] w-full text-lg font-semibold;
   }
@@ -299,4 +301,50 @@ button {
 
 .demo-block {
   @apply mb-6 p-4 bg-gray-50 rounded-lg;
+}
+
+.glass {
+  position: relative;
+}
+.glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 2px;
+  background: radial-gradient(
+    267.48% 141.42% at 0% 0%,
+    #fff 0%,
+    rgba(174, 174, 174, 0) 25.48%,
+    rgba(226, 226, 226, 0.2) 76.44%,
+    rgba(255, 255, 255, 0.8) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.glass::after {
+  content: '';
+  position: absolute;
+  opacity: 0.5;
+  inset: 0;
+  border-radius: 20px;
+  padding: 2px;
+  background: radial-gradient(
+    267.48% 141.42% at 100% 100%,
+    #fff 0%,
+    rgba(174, 174, 174, 0) 25.48%,
+    rgba(226, 226, 226, 0.2) 76.44%,
+    rgba(255, 255, 255, 0.8) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }

@@ -14,6 +14,7 @@
 
 /* 모달 컨테이너 */
 .ant-modal-root .ant-modal-wrap {
+  min-width: 1920px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -155,4 +156,63 @@
 }
 .modal-header-btn {
   @apply inline-flex w-fit cursor-pointer;
+}
+.content-modal {
+  align-self: start;
+  margin-top: 225px;
+}
+.content-modal .ant-modal-content {
+  padding: 0;
+  border-radius: 30px;
+  overflow: hidden;
+  height: 775px;
+  width: 1180px;
+  transform: translateX(100px);
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.25);
+}
+
+.content-modal .ant-modal-body {
+  padding: 0;
+  height: 100%;
+  position: relative;
+  border-radius: 50px;
+}
+
+.content-modal__close {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 50%;
+  &:hover {
+    background: #e1e4e7;
+  }
+}
+
+.content-modal__body {
+  @apply flex flex-col;
+  width: 100%;
+  height: 100%;
+  padding: 25px;
+}
+
+.modal-con-header {
+  @apply flex;
+  height: 45px;
+  padding-right: 100px;
+}
+.modal-con-body {
+  @apply flex flex-col mt-4 flex-grow;
+
+  border-radius: 38px;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(15px);
 }

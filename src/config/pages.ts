@@ -53,6 +53,14 @@ const PAGE_DATA = [
     screenId: '',
     message: '',
   },
+  {
+    title: 'Dashboard',
+    description: '',
+    path: '/dashboard',
+    status: 'completed' as const,
+    screenId: '',
+    message: '',
+  },
 ];
 
 // 자동으로 키와 넘버를 매기는 함수
