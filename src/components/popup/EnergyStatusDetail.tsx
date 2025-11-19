@@ -2,7 +2,6 @@
 
 import ContentModal from '@/components/ui/ContentModal';
 import Image from 'next/image';
-import { Button } from 'antd';
 
 interface EnergyDetailProps {
   open: boolean;

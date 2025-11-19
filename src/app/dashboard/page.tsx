@@ -366,7 +366,11 @@ export default function DashboardPage() {
         onCloseAction={handleCloseBbsDetail}
         onOpenList={() => handleOpenPopup('bbs')}
       />
-      <BbsNoresultPopup open={isBbsNoresultOpen} onCloseAction={handleCloseBbsNoresult} />
+      <BbsNoresultPopup
+        open={isBbsNoresultOpen}
+        onCloseAction={handleCloseBbsNoresult}
+        onOpenWrite={handleOpenBbsWrite}
+      />
       <EnergyStatusDetailPopup
         open={isEnergyStatusDetailOpen}
         onCloseAction={handleCloseEnergyStatusDetail}

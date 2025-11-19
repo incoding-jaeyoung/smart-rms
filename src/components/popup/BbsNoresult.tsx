@@ -1,16 +1,15 @@
 'use client';
 
 import ContentModal from '@/components/ui/ContentModal';
-import Image from 'next/image';
 import { Button, Input } from 'antd';
 
-interface BbsListProps {
+interface BbsNoresultProps {
   open: boolean;
   onCloseAction: () => void;
   onOpenWrite: () => void;
 }
 
-export default function BbsListPopup({ open, onCloseAction, onOpenWrite }: BbsListProps) {
+export default function BbsNoresultPopup({ open, onCloseAction, onOpenWrite }: BbsNoresultProps) {
   return (
     <ContentModal open={open} onCloseAction={onCloseAction}>
       <div className="modal-con-header">
