@@ -216,3 +216,58 @@
   background: rgba(255, 255, 255, 0.65);
   backdrop-filter: blur(15px);
 }
+.alert-modal {
+  @apply !items-start;
+  padding: 150px 0;
+  pointer-events: none;
+}
+.alert-modal .ant-modal {
+  width: auto !important;
+  min-width: 0px !important;
+  pointer-events: auto;
+}
+.alert-modal .ant-modal .ant-modal-content {
+  @apply !bg-white;
+  box-shadow: 1px 7px 7px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 20px !important;
+  padding: 30px 50px;
+
+  .ant-modal-confirm-body-wrapper {
+    @apply flex flex-col;
+    &:before,
+    &:after {
+      display: none !important;
+    }
+  }
+  .ant-modal-confirm-title {
+    font-size: 25px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .ant-modal-confirm-btns {
+    text-align: center;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 0;
+    .ant-btn {
+      margin: 0;
+      margin-top: 10px;
+    }
+  }
+  .anticon {
+    margin-top: 6px;
+    margin-right: 8px;
+    &.anticon-exclamation-circle {
+      color: #f00;
+    }
+  }
+  .ant-modal-confirm-paragraph {
+    gap: 0;
+  }
+}
+
+.alert-modal .ant-modal .ant-modal-header {
+  /* alert 모달 헤더 스타일 */
+}

@@ -3,35 +3,64 @@
 import { useState } from 'react';
 import Header, { HeaderMenuKey } from '@/components/layout/Header';
 import WeatherInfo from '@/components/popup/WeatherInfo';
-import BbsPopup from '@/components/popup/bbs';
+import BbsListPopup from '@/components/popup/BbsList';
+import BbsWritePopup from '@/components/popup/BbsWrite';
+import BbsDetailPopup from '@/components/popup/BbsDetail';
+import BbsNoresultPopup from '@/components/popup/BbsNoresult';
+import EnergyStatusPopup from '@/components/popup/EnergyStatus';
+import EnergyStatusDetailPopup from '@/components/popup/EnergyStatusDetail';
 import Image from 'next/image';
+import { useModal } from '@/lib/modal';
 
-type PopupKey =
-  | 'weather'
-  | 'temperature'
-  | 'humidity'
-  | 'fire'
-  | 'smoke'
-  | 'power'
-  | 'carbon'
-  | 'logistics-map'
-  | 'digital-twin'
-  | 'dashboard'
-  | 'daily-inout'
-  | 'service'
-  | 'shipping'
-  | 'inventory'
-  | HeaderMenuKey;
+type PopupKey = string;
 
 export default function DashboardPage() {
+  const modal = useModal();
   const [currentPopup, setCurrentPopup] = useState<PopupKey | null>(null);
-
+  const [isBbsWriteOpen, setBbsWriteOpen] = useState(false);
+  const [isBbsDetailOpen, setBbsDetailOpen] = useState(false);
+  const [isBbsNoresultOpen, setBbsNoresultOpen] = useState(false);
+  const [isEnergyStatusDetailOpen, setEnergyStatusDetailOpen] = useState(false);
+  const getIconSrc = (key: PopupKey, defaultSrc: string, activeSrc: string) =>
+    currentPopup === key ? activeSrc : defaultSrc;
   const handleOpenPopup = (popupKey: PopupKey) => {
     setCurrentPopup((prev) => (prev === popupKey ? null : popupKey));
   };
 
   const handleClosePopup = () => {
     setCurrentPopup(null);
+  };
+
+  const handleOpenBbsWrite = () => {
+    setBbsWriteOpen(true);
+  };
+
+  const handleCloseBbsWrite = () => {
+    setBbsWriteOpen(false);
+  };
+
+  const handleOpenBbsDetail = () => {
+    setBbsDetailOpen(true);
+  };
+
+  const handleCloseBbsDetail = () => {
+    setBbsDetailOpen(false);
+  };
+
+  const handleOpenBbsNoresult = () => {
+    setBbsNoresultOpen(true);
+  };
+
+  const handleCloseBbsNoresult = () => {
+    setBbsNoresultOpen(false);
+  };
+
+  const handleOpenEnergyStatusDetail = () => {
+    setEnergyStatusDetailOpen(true);
+  };
+
+  const handleCloseEnergyStatusDetail = () => {
+    setEnergyStatusDetailOpen(false);
   };
 
   const headerMenuKeys: HeaderMenuKey[] = ['bbs', 'support', 'userInfo', 'system', 'logout'];
@@ -214,7 +243,16 @@ export default function DashboardPage() {
             <div className="dashboard-btn-content">
               <dl>
                 <dt>
-                  <Image src="/icons/ico-dashboard-05.svg" alt="" width={24} height={24} />
+                  <Image
+                    src={getIconSrc(
+                      'power',
+                      '/icons/ico-dashboard-05.svg',
+                      '/icons/ico-dashboard-05-w.svg'
+                    )}
+                    alt=""
+                    width={24}
+                    height={24}
+                  />
                   금일 누적 전력량
                 </dt>
                 <dd className="text-[30px] h-[53px] font-semibold flex items-center gap-1">
@@ -224,7 +262,16 @@ export default function DashboardPage() {
               </dl>
               <dl>
                 <dt>
-                  <Image src="/icons/ico-dashboard-06.svg" alt="" width={24} height={24} />
+                  <Image
+                    src={getIconSrc(
+                      'power',
+                      '/icons/ico-dashboard-06.svg',
+                      '/icons/ico-dashboard-06-w.svg'
+                    )}
+                    alt=""
+                    width={24}
+                    height={24}
+                  />
                   금일 누적 탄소량
                 </dt>
                 <dd className="text-[30px] h-[53px] font-semibold flex items-center gap-1">
@@ -297,8 +344,97 @@ export default function DashboardPage() {
           </button>
         </div>
       </div>
-      {currentPopup === 'weather' && <WeatherInfo open={true} onCloseAction={handleClosePopup} />}
-      {currentPopup === 'bbs' && <BbsPopup open={true} onCloseAction={handleClosePopup} />}
+      <WeatherInfo open={currentPopup === 'weather'} onCloseAction={handleClosePopup} />
+      <EnergyStatusPopup
+        open={currentPopup === 'power'}
+        onCloseAction={handleClosePopup}
+        onOpenDetail={handleOpenEnergyStatusDetail}
+      />
+      <BbsListPopup
+        open={currentPopup === 'bbs'}
+        onCloseAction={handleClosePopup}
+        onOpenWrite={handleOpenBbsWrite}
+        onOpenDetail={handleOpenBbsDetail}
+      />
+      <BbsWritePopup
+        open={isBbsWriteOpen}
+        onCloseAction={handleCloseBbsWrite}
+        onOpenList={() => handleOpenPopup('bbs')}
+      />
+      <BbsDetailPopup
+        open={isBbsDetailOpen}
+        onCloseAction={handleCloseBbsDetail}
+        onOpenList={() => handleOpenPopup('bbs')}
+      />
+      <BbsNoresultPopup open={isBbsNoresultOpen} onCloseAction={handleCloseBbsNoresult} />
+      <EnergyStatusDetailPopup
+        open={isEnergyStatusDetailOpen}
+        onCloseAction={handleCloseEnergyStatusDetail}
+      />
+
+      <div className="sample fixed bottom-0 right-0 flex gap-2 text-black flex-col items-end z-[9999] p-4 bg-[#ffffff50]">
+        <button type="button" onClick={handleOpenEnergyStatusDetail}>
+          데이터 집계 모달 (EnergyStatusDetail)
+        </button>
+        <button type="button" onClick={handleOpenBbsNoresult}>
+          빈 게시글 모달 (BbsNoresult)
+        </button>
+        <button type="button" onClick={handleOpenBbsDetail}>
+          글상세 모달 (BbsDetail)
+        </button>
+        <button type="button" onClick={handleOpenBbsWrite}>
+          글쓰기 모달 (BbsWrite)
+        </button>
+        <button
+          type="button"
+          onClick={() =>
+            modal.showConfirm({
+              title: '작성 중인 글이 있습니다. <br/> 취소하시겠습니까?',
+              okText: '예',
+              cancelText: '아니오',
+              onOk: () => {
+                modal.showError({ title: '게시글 작성이 취소되었습니다.', autoClose: 5000 });
+              },
+              onCancel: () => {},
+            })
+          }
+        >
+          확인 모달 (Confirm)
+        </button>
+        <button
+          type="button"
+          onClick={() =>
+            modal.showSuccess({
+              title: '게시글이 등록되었습니다.',
+              autoClose: 5000,
+            })
+          }
+        >
+          성공 모달 (Success)
+        </button>
+        <button
+          type="button"
+          onClick={() =>
+            modal.showError({
+              title: '게시글 작성이 취소되었습니다.',
+              autoClose: 5000,
+            })
+          }
+        >
+          에러 모달 (Error)
+        </button>
+        <button
+          type="button"
+          onClick={() =>
+            modal.showWarning({
+              title: '제목을 입력해주세요.<br/>제목은 최소 2자 이상 입력되어야 합니다.',
+              autoClose: 5000,
+            })
+          }
+        >
+          경고 모달 (Warning)
+        </button>
+      </div>
     </div>
   );
 }

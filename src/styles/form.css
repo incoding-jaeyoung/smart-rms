@@ -478,3 +478,33 @@
     background-position: 13px center;
   }
 }
+
+input[type='text'].bbs-form {
+  @apply text-xl;
+  height: 50px;
+  border-radius: 23px;
+  border: 1px solid #fff;
+  padding: 0 15px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.2) inset;
+  &::placeholder {
+    color: #000;
+  }
+}
+textarea.bbs-form {
+  @apply text-base;
+  border-radius: 10px;
+  background: #fff;
+  padding: 15px 25px;
+  border: none;
+  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.2) inset;
+  height: 335px;
+  resize: none !important;
+  &:focus {
+    border: none !important;
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.2) inset !important;
+  }
+  &::placeholder {
+    color: #000;
+  }
+}

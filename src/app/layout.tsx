@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { ConfigProvider, antdConfig } from '@/lib/antd';
 import AntdWarningFilter from '@/components/AntdWarningFilter';
+import { App } from 'antd';
 
 export const metadata: Metadata = {
   title: '대전스마트물류센터',
@@ -24,7 +25,9 @@ export default function RootLayout({
     <html lang="ko">
       <body className="antialiased">
         <AntdWarningFilter />
-        <ConfigProvider {...antdConfig}>{children}</ConfigProvider>
+        <ConfigProvider {...antdConfig}>
+          <App>{children}</App>
+        </ConfigProvider>
       </body>
     </html>
   );

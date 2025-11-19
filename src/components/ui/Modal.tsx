@@ -22,7 +22,6 @@ interface CustomModalProps extends Omit<AntModalProps, 'footer'> {
   confirmIcon?: ReactNode; // 확인 버튼 아이콘
   cancelIcon?: ReactNode; // 취소 버튼 아이콘
   titleIcon?: ReactNode; // 제목 아이콘
-  noAnimation?: boolean; // 애니메이션 제거
   showHeader?: boolean; // 헤더 표시 여부
 }
 
@@ -43,7 +42,6 @@ export const Modal: React.FC<CustomModalProps> = ({
   confirmIcon,
   cancelIcon,
   titleIcon,
-  noAnimation = false,
   showHeader = true,
   ...props
 }) => {
@@ -109,14 +107,6 @@ export const Modal: React.FC<CustomModalProps> = ({
     );
   };
 
-  const sizeStyle = getModalStyle() ?? {};
-  const { width: sizeWidth, ...sizeStyleWithoutWidth } = sizeStyle as {
-    width?: number;
-    [key: string]: unknown;
-  };
-  const resolvedWidth = customWidth ?? sizeWidth;
-  const mergedStyle = { ...sizeStyleWithoutWidth, ...customStyle };
-
   return (
     <AntModal
       {...restProps}
@@ -139,20 +129,18 @@ export const Modal: React.FC<CustomModalProps> = ({
               )}
             </div>
           </div>
-        ) : null
+        ) : undefined
       }
       open={props.open}
       onCancel={onCancel}
       footer={renderFooter()}
-      width={resolvedWidth}
-      style={mergedStyle}
+      width={customWidth ?? getModalSize().width}
+      style={{ ...getModalStyle(), ...customStyle }}
       className={`custom-modal ${variant} ${className}`}
       destroyOnHidden={true}
       maskClosable={false}
       keyboard={true}
       centered={variant === 'centered'}
-      transitionName={noAnimation ? '' : undefined}
-      maskTransitionName={noAnimation ? '' : undefined}
       // mask={false}
     >
       {children}
