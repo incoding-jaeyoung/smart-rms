@@ -36,7 +36,7 @@ export const useModal = () => {
   return {
     showConfirm: (options: {
       title?: string | ReactNode;
-      content: string | ReactNode;
+      content?: string | ReactNode;
       okText?: string;
       cancelText?: string;
       onOk?: () => void | Promise<void>;
@@ -48,9 +48,11 @@ export const useModal = () => {
           : options.title || '확인';
 
       const content =
-        typeof options.content === 'string' && options.content.includes('<br/>')
-          ? createElement('div', { dangerouslySetInnerHTML: { __html: options.content } })
-          : options.content;
+        options.content !== undefined
+          ? typeof options.content === 'string' && options.content.includes('<br/>')
+            ? createElement('div', { dangerouslySetInnerHTML: { __html: options.content } })
+            : options.content
+          : '';
 
       return modal.confirm({
         title: title,
@@ -64,7 +66,7 @@ export const useModal = () => {
     },
     showSuccess: (options: {
       title?: string | ReactNode;
-      content: string | ReactNode;
+      content?: string | ReactNode;
       okText?: string;
       onOk?: () => void;
       autoClose?: number;
@@ -75,9 +77,11 @@ export const useModal = () => {
           : options.title || '성공';
 
       const content =
-        typeof options.content === 'string' && options.content.includes('<br/>')
-          ? createElement('div', { dangerouslySetInnerHTML: { __html: options.content } })
-          : options.content;
+        options.content !== undefined
+          ? typeof options.content === 'string' && options.content.includes('<br/>')
+            ? createElement('div', { dangerouslySetInnerHTML: { __html: options.content } })
+            : options.content
+          : '';
 
       const autoCloseDuration =
         typeof options.autoClose === 'number' ? options.autoClose : undefined;
@@ -100,7 +104,7 @@ export const useModal = () => {
     },
     showError: (options: {
       title?: string | ReactNode;
-      content: string | ReactNode;
+      content?: string | ReactNode;
       okText?: string;
       onOk?: () => void;
       autoClose?: number;
@@ -111,9 +115,11 @@ export const useModal = () => {
           : options.title || '오류';
 
       const content =
-        typeof options.content === 'string' && options.content.includes('<br/>')
-          ? createElement('div', { dangerouslySetInnerHTML: { __html: options.content } })
-          : options.content;
+        options.content !== undefined
+          ? typeof options.content === 'string' && options.content.includes('<br/>')
+            ? createElement('div', { dangerouslySetInnerHTML: { __html: options.content } })
+            : options.content
+          : '';
 
       const autoCloseDuration =
         typeof options.autoClose === 'number' ? options.autoClose : undefined;
@@ -136,7 +142,7 @@ export const useModal = () => {
     },
     showWarning: (options: {
       title?: string | ReactNode;
-      content: string | ReactNode;
+      content?: string | ReactNode;
       okText?: string;
       onOk?: () => void;
       autoClose?: number;
@@ -147,9 +153,11 @@ export const useModal = () => {
           : options.title || '경고';
 
       const content =
-        typeof options.content === 'string' && options.content.includes('<br/>')
-          ? createElement('div', { dangerouslySetInnerHTML: { __html: options.content } })
-          : options.content;
+        options.content !== undefined
+          ? typeof options.content === 'string' && options.content.includes('<br/>')
+            ? createElement('div', { dangerouslySetInnerHTML: { __html: options.content } })
+            : options.content
+          : '';
 
       const autoCloseDuration =
         typeof options.autoClose === 'number' ? options.autoClose : undefined;
@@ -180,7 +188,7 @@ export const useModal = () => {
  */
 export const showConfirm = (options: {
   title?: string | ReactNode;
-  content: string | ReactNode;
+  content?: string | ReactNode;
   okText?: string;
   cancelText?: string;
   onOk?: () => void | Promise<void>;
@@ -195,9 +203,11 @@ export const showConfirm = (options: {
       : options.title || '확인';
 
   const content =
-    typeof options.content === 'string' && options.content.includes('<br/>')
-      ? createElement('div', { dangerouslySetInnerHTML: { __html: options.content } })
-      : options.content;
+    options.content !== undefined
+      ? typeof options.content === 'string' && options.content.includes('<br/>')
+        ? createElement('div', { dangerouslySetInnerHTML: { __html: options.content } })
+        : options.content
+      : '';
 
   return modalInstance.modal.confirm({
     title: title,
@@ -218,7 +228,7 @@ export const showConfirm = (options: {
  */
 export const showSuccess = (options: {
   title?: string | ReactNode;
-  content: string | ReactNode;
+  content?: string | ReactNode;
   okText?: string;
   onOk?: () => void;
   autoClose?: number;
@@ -232,9 +242,11 @@ export const showSuccess = (options: {
       : options.title || '성공';
 
   const content =
-    typeof options.content === 'string' && options.content.includes('<br/>')
-      ? createElement('div', { dangerouslySetInnerHTML: { __html: options.content } })
-      : options.content;
+    options.content !== undefined
+      ? typeof options.content === 'string' && options.content.includes('<br/>')
+        ? createElement('div', { dangerouslySetInnerHTML: { __html: options.content } })
+        : options.content
+      : '';
 
   const autoCloseDuration = typeof options.autoClose === 'number' ? options.autoClose : undefined;
   const modalRef = modalInstance.modal.success({
@@ -260,7 +272,7 @@ export const showSuccess = (options: {
  */
 export const showError = (options: {
   title?: string | ReactNode;
-  content: string | ReactNode;
+  content?: string | ReactNode;
   okText?: string;
   onOk?: () => void;
   autoClose?: number;
@@ -274,9 +286,11 @@ export const showError = (options: {
       : options.title || '오류';
 
   const content =
-    typeof options.content === 'string' && options.content.includes('<br/>')
-      ? createElement('div', { dangerouslySetInnerHTML: { __html: options.content } })
-      : options.content;
+    options.content !== undefined
+      ? typeof options.content === 'string' && options.content.includes('<br/>')
+        ? createElement('div', { dangerouslySetInnerHTML: { __html: options.content } })
+        : options.content
+      : '';
 
   const autoCloseDuration = typeof options.autoClose === 'number' ? options.autoClose : undefined;
   const modalRef = modalInstance.modal.error({
@@ -302,7 +316,7 @@ export const showError = (options: {
  */
 export const showWarning = (options: {
   title?: string | ReactNode;
-  content: string | ReactNode;
+  content?: string | ReactNode;
   okText?: string;
   onOk?: () => void;
   autoClose?: number;
@@ -316,9 +330,11 @@ export const showWarning = (options: {
       : options.title || '경고';
 
   const content =
-    typeof options.content === 'string' && options.content.includes('<br/>')
-      ? createElement('div', { dangerouslySetInnerHTML: { __html: options.content } })
-      : options.content;
+    options.content !== undefined
+      ? typeof options.content === 'string' && options.content.includes('<br/>')
+        ? createElement('div', { dangerouslySetInnerHTML: { __html: options.content } })
+        : options.content
+      : '';
 
   const autoCloseDuration = typeof options.autoClose === 'number' ? options.autoClose : undefined;
   const modalRef = modalInstance.modal.warning({
