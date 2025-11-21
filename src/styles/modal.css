@@ -8,8 +8,10 @@
 
 /* 모달 마스크 (배경 오버레이) */
 .ant-modal-root .ant-modal-mask.ant-modal-mask {
-  /* background-color: rgba(0, 0, 0, 0.45); */
-  background: none;
+  background-color: rgba(0, 0, 0, 0.45);
+  /* backdrop-filter: blur(5px); */
+  pointer-events: auto;
+  /* background: none; */
 }
 
 /* 모달 컨테이너 */

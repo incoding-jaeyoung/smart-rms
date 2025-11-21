@@ -25,7 +25,7 @@ export default function ContentModal({
       title={undefined}
       showHeader={false}
       maskClosable={false}
-      mask={false}
+      mask={true}
       wrapClassName="content-modal-wrap"
       className={`content-modal ${className ?? ''}`}
       width={1180}
