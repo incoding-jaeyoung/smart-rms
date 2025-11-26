@@ -105,10 +105,10 @@ export default function WeatherInfo({ open, onCloseAction }: WeatherInfoProps) {
             </ul>
             <ul className="!gap-4">
               <li>
-                미세먼지<b className="good">매우좋음</b>
+                미세먼지<b className="color-fine">매우좋음</b>
               </li>
               <li>
-                초미세먼지<b className="bad">매우나쁨</b>
+                초미세먼지<b className="color-bad">매우나쁨</b>
               </li>
             </ul>
             <ul>

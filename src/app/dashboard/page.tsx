@@ -8,7 +8,9 @@ import BbsWritePopup from '@/components/popup/BbsWrite';
 import BbsDetailPopup from '@/components/popup/BbsDetail';
 import BbsNoresultPopup from '@/components/popup/BbsNoresult';
 import EnergyStatusPopup from '@/components/popup/EnergyStatus';
-import EnergyStatusDetailPopup from '@/components/popup/EnergyStatusDetail';
+import PopupDefaultLayout from '@/components/popup/EnergyStatusDetail';
+import PopupDefaultContent from '@/components/popup/PopupDefaultContent';
+import PopupDefaultBattery from '@/components/popup/PopupDefaultBattery';
 import Image from 'next/image';
 import { useModal } from '@/lib/modal';
 
@@ -21,6 +23,9 @@ export default function DashboardPage() {
   const [isBbsDetailOpen, setBbsDetailOpen] = useState(false);
   const [isBbsNoresultOpen, setBbsNoresultOpen] = useState(false);
   const [isEnergyStatusDetailOpen, setEnergyStatusDetailOpen] = useState(false);
+  const [isPopupDefaultOpen, setPopupDefaultOpen] = useState(false);
+  const [isPopupDefaultContentOpen, setPopupDefaultContentOpen] = useState(false);
+  const [isPopupDefaultBatteryOpen, setPopupDefaultBatteryOpen] = useState(false);
   const getIconSrc = (key: PopupKey, defaultSrc: string, activeSrc: string) =>
     currentPopup === key ? activeSrc : defaultSrc;
   const handleOpenPopup = (popupKey: PopupKey) => {
@@ -61,6 +66,30 @@ export default function DashboardPage() {
 
   const handleCloseEnergyStatusDetail = () => {
     setEnergyStatusDetailOpen(false);
+  };
+
+  const handleOpenPopupDefault = () => {
+    setPopupDefaultOpen(true);
+  };
+
+  const handleClosePopupDefault = () => {
+    setPopupDefaultOpen(false);
+  };
+
+  const handleOpenPopupDefaultContent = () => {
+    setPopupDefaultContentOpen(true);
+  };
+
+  const handleClosePopupDefaultContent = () => {
+    setPopupDefaultContentOpen(false);
+  };
+
+  const handleOpenPopupDefaultBattery = () => {
+    setPopupDefaultBatteryOpen(true);
+  };
+
+  const handleClosePopupDefaultBattery = () => {
+    setPopupDefaultBatteryOpen(false);
   };
 
   const headerMenuKeys: HeaderMenuKey[] = ['bbs', 'support', 'userInfo', 'system', 'logout'];
@@ -117,14 +146,23 @@ export default function DashboardPage() {
           >
             <div className="btn-header">
               <p>
-                <span className="status ico-ok"></span>정상 작동중
+                <span className="status ico-fine"></span>정상 작동중
               </p>
               <span className="ico-arrow"></span>
             </div>
             <div className="dashboard-btn-content">
               <dl>
                 <dt>
-                  <Image src="/icons/ico-dashboard-01.svg" alt="" width={15} height={21} />
+                  <Image
+                    src={getIconSrc(
+                      'temperature',
+                      '/icons/ico-dashboard-01.svg',
+                      '/icons/ico-dashboard-01-w.svg'
+                    )}
+                    alt=""
+                    width={15}
+                    height={21}
+                  />
                   적정 온도
                 </dt>
                 <dd className="text-[30px] h-[36px] font-semibold flex items-center">
@@ -146,7 +184,16 @@ export default function DashboardPage() {
               </dl>
               <dl>
                 <dt>
-                  <Image src="/icons/ico-dashboard-02.svg" alt="" width={24} height={24} />
+                  <Image
+                    src={getIconSrc(
+                      'temperature',
+                      '/icons/ico-dashboard-02.svg',
+                      '/icons/ico-dashboard-02-w.svg'
+                    )}
+                    alt=""
+                    width={24}
+                    height={24}
+                  />
                   적정 습도
                 </dt>
                 <dd className="text-[30px] h-[36px] font-semibold flex items-center">
@@ -175,14 +222,23 @@ export default function DashboardPage() {
           >
             <div className="btn-header">
               <p>
-                <span className="status ico-ok"></span>정상 작동중
+                <span className="status ico-normal"></span>정상 작동중
               </p>
               <span className="ico-arrow"></span>
             </div>
             <div className="dashboard-btn-content">
               <dl>
                 <dt>
-                  <Image src="/icons/ico-dashboard-03.svg" alt="" width={24} height={24} />
+                  <Image
+                    src={getIconSrc(
+                      'fire',
+                      '/icons/ico-dashboard-03.svg',
+                      '/icons/ico-dashboard-03-w.svg'
+                    )}
+                    alt=""
+                    width={24}
+                    height={24}
+                  />
                   불꽃
                 </dt>
                 <dd className="text-sm h-[36px] font-semibold flex items-center">이상없음</dd>
@@ -202,7 +258,16 @@ export default function DashboardPage() {
               </dl>
               <dl>
                 <dt>
-                  <Image src="/icons/ico-dashboard-04.svg" alt="" width={24} height={24} />
+                  <Image
+                    src={getIconSrc(
+                      'fire',
+                      '/icons/ico-dashboard-04.svg',
+                      '/icons/ico-dashboard-04-w.svg'
+                    )}
+                    alt=""
+                    width={24}
+                    height={24}
+                  />
                   연기
                 </dt>
                 <dd className="text-[32px] h-[36px] font-semibold flex items-center gap-1.5">
@@ -236,7 +301,7 @@ export default function DashboardPage() {
           >
             <div className="btn-header">
               <p>
-                <span className="status ico-ok"></span>정상 작동중
+                <span className="status ico-bad"></span>RTU1 + 작동 중지
               </p>
               <span className="ico-arrow"></span>
             </div>
@@ -371,11 +436,20 @@ export default function DashboardPage() {
         onCloseAction={handleCloseBbsNoresult}
         onOpenWrite={handleOpenBbsWrite}
       />
-      <EnergyStatusDetailPopup
+      {/* 기본 모달 컨텐츠 */}
+      <PopupDefaultContent
+        open={isPopupDefaultContentOpen}
+        onClose={handleClosePopupDefaultContent}
+      />
+      <PopupDefaultBattery
+        open={isPopupDefaultBatteryOpen}
+        onClose={handleClosePopupDefaultBattery}
+      />
+      {/* 기본 모달 레이아웃 */}
+      <PopupDefaultLayout
         open={isEnergyStatusDetailOpen}
         onCloseAction={handleCloseEnergyStatusDetail}
       />
-
       <div className="sample fixed bottom-0 right-0 flex gap-2 text-black flex-col items-end z-[9999] p-4 bg-[#ffffff50]">
         <button type="button" onClick={handleOpenEnergyStatusDetail}>
           데이터 집계 모달 (EnergyStatusDetail)
@@ -437,6 +511,12 @@ export default function DashboardPage() {
           }
         >
           경고 모달 (Warning)
+        </button>
+        <button type="button" onClick={handleOpenPopupDefaultContent}>
+          기본 모달 (PopupDefault)
+        </button>
+        <button type="button" onClick={handleOpenPopupDefaultBattery}>
+          기본 배터리 모달 (PopupDefaultBattery)
         </button>
       </div>
     </div>

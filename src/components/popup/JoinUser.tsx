@@ -51,6 +51,7 @@ export default function JoinUser({ open, onClose }: JoinUserProps) {
                 className="success"
                 suffix={<></>}
                 disabled={enterNum}
+                // disabled={true}
               />
             </Form.Item>
             <Button

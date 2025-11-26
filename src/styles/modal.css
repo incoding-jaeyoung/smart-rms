@@ -233,7 +233,7 @@
   box-shadow: 1px 7px 7px 8px rgba(0, 0, 0, 0.2);
   border-radius: 20px !important;
   padding: 30px 50px;
-
+  margin-left: 190px;
   .ant-modal-confirm-body-wrapper {
     @apply flex flex-col;
     &:before,
@@ -271,4 +271,60 @@
 }
 
 .alert-modal .ant-modal .ant-modal-header {
+}
+
+.popup-default-wrap {
+  align-items: flex-start !important;
+  top: 180px !important;
+  margin-left: 78px;
+}
+.ant-modal.popup-default {
+  /* @apply bg-white; */
+  .ant-modal-content {
+    padding: 70px 50px 55px 50px;
+    width: 570px;
+    border-radius: 20px !important;
+    border: 2px solid #fff;
+    background: rgba(255, 255, 255, 0.9) !important;
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.25);
+    &::after,
+    &::before {
+      display: none;
+    }
+  }
+  .ant-btn.ant-btn-primary {
+    border-radius: 20px;
+    font-size: 15px;
+    box-shadow: none;
+  }
+  .ant-modal-close {
+    display: flex;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 25px;
+    right: 40px;
+
+    color: #000;
+  }
+  .popup-btn-wrap {
+    @apply flex justify-center gap-2.5;
+    margin-top: 50px;
+  }
+  .default-popup-content {
+    @apply flex flex-col;
+    max-height: 500px;
+    overflow-y: auto;
+    h2 {
+      font-size: 25px;
+      font-weight: 600;
+      text-align: center;
+      line-height: 145%; /* 36.25px */
+    }
+    p {
+      font-size: 22px;
+      font-weight: 500;
+      text-align: center;
+    }
+  }
 }
