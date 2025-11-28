@@ -42,34 +42,34 @@ export default function WeatherInfo({ open, onCloseAction }: WeatherInfoProps) {
 
   const todaySlides = useMemo(
     () => [
-      { label: '지금', chance: '20%', temp: '24°' },
-      { label: '오후6시', chance: '20%', temp: '24°' },
-      { label: '오후7시', chance: '20%', temp: '24°' },
-      { label: '오후8시', chance: '20%', temp: '24°' },
-      { label: '오후9시', chance: '20%', temp: '24°' },
-      { label: '오후10시', chance: '20%', temp: '24°' },
-      { label: '오후11시', chance: '20%', temp: '24°' },
-      { label: '오전12시', chance: '20%', temp: '24°' },
-      { label: '오전1시', chance: '20%', temp: '24°' },
-      { label: '오전2시', chance: '20%', temp: '24°' },
-      { label: '오전3시', chance: '20%', temp: '24°' },
-      { label: '오전4시', chance: '20%', temp: '24°' },
-      { label: '오전5시', chance: '20%', temp: '24°' },
+      { label: '지금', chance: '20%', temp: '24°', tempAfter: '25°' },
+      { label: '오후6시', chance: '', temp: '24°', tempAfter: '25°' },
+      { label: '오후7시', chance: '20%', temp: '24°', tempAfter: '25°' },
+      { label: '오후8시', chance: '20%', temp: '24°', tempAfter: '25°' },
+      { label: '오후9시', chance: '20%', temp: '24°', tempAfter: '25°' },
+      { label: '오후10시', chance: '20%', temp: '24°', tempAfter: '25°' },
+      { label: '오후11시', chance: '20%', temp: '24°', tempAfter: '25°' },
+      { label: '오전12시', chance: '20%', temp: '24°', tempAfter: '25°' },
+      { label: '오전1시', chance: '20%', temp: '24°', tempAfter: '25°' },
+      { label: '오전2시', chance: '20%', temp: '24°', tempAfter: '25°' },
+      { label: '오전3시', chance: '20%', temp: '24°', tempAfter: '25°' },
+      { label: '오전4시', chance: '20%', temp: '24°', tempAfter: '25°' },
+      { label: '오전5시', chance: '20%', temp: '24°', tempAfter: '25°' },
     ],
     []
   );
 
   const weeklySlides = useMemo(
     () => [
-      { label: '지금', chance: '10%', temp: '25°' },
-      { label: '내일', chance: '30%', temp: '22°' },
-      { label: '목요일', chance: '60%', temp: '21°' },
-      { label: '금요일', chance: '40%', temp: '23°' },
-      { label: '토요일', chance: '50%', temp: '24°' },
-      { label: '일요일', chance: '20%', temp: '26°' },
-      { label: '월요일', chance: '15%', temp: '25°' },
-      { label: '화요일', chance: '10%', temp: '25°' },
-      { label: '수요일', chance: '30%', temp: '22°' },
+      { label: '지금', chance: '10%', temp: '25°', tempAfter: '26°' },
+      { label: '내일', chance: '30%', temp: '22°', tempAfter: '23°' },
+      { label: '목요일', chance: '60%', temp: '21°', tempAfter: '22°' },
+      { label: '금요일', chance: '40%', temp: '23°', tempAfter: '24°' },
+      { label: '토요일', chance: '50%', temp: '24°', tempAfter: '25°' },
+      { label: '일요일', chance: '20%', temp: '26°', tempAfter: '27°' },
+      { label: '월요일', chance: '15%', temp: '25°', tempAfter: '26°' },
+      { label: '화요일', chance: '10%', temp: '25°', tempAfter: '26°' },
+      { label: '수요일', chance: '30%', temp: '22°', tempAfter: '23°' },
     ],
     []
   );
@@ -200,7 +200,11 @@ export default function WeatherInfo({ open, onCloseAction }: WeatherInfoProps) {
                           />
                           <span>{slide.chance}</span>
                         </p>
-                        <p className="temp">{slide.temp}</p>
+                        <p className="temp">
+                          {slide.temp}
+                          <span></span>
+                          {slide.tempAfter}
+                        </p>
                       </div>
                     </SwiperSlide>
                   ))}
@@ -247,7 +251,11 @@ export default function WeatherInfo({ open, onCloseAction }: WeatherInfoProps) {
                           />
                           <span>{slide.chance}</span>
                         </p>
-                        <p className="temp">{slide.temp}</p>
+                        <p className="temp">
+                          {slide.temp}
+                          <span></span>
+                          {slide.tempAfter}
+                        </p>
                       </div>
                     </SwiperSlide>
                   ))}

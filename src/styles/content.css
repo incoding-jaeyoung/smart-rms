@@ -557,7 +557,8 @@
         padding: 5px 10px;
         box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
         height: 33px;
-        width: 135px;
+        line-height: 33px;
+        /* width: 135px; */
       }
       .header-location {
         @apply font-semibold;
@@ -654,7 +655,7 @@
       background: #fff;
       font-size: 15px;
       &.active {
-        background: #262626;
+        background: #262626 !important;
         color: #fff;
         font-weight: 600;
       }
@@ -727,12 +728,27 @@
         @apply flex items-center flex-col justify-center;
         font-weight: 500;
         line-height: 160%;
+        span {
+          display: block;
+          height: 22.4px;
+          text-align: center;
+        }
       }
       .temp {
-        font-size: 23px;
+        @apply flex items-center justify-center gap-0.5;
+        margin-top: 5px;
+        font-size: 21px;
         font-style: normal;
         font-weight: 500;
         line-height: normal;
+        letter-spacing: -0.21px;
+        span {
+          display: inline-block;
+          width: 1px;
+          height: 18px;
+          background-color: #999;
+          margin: 0 3px;
+        }
       }
     }
 
