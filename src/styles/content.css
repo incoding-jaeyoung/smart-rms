@@ -411,12 +411,16 @@
 }
 
 .weather-info {
-  @apply flex items-center flex-grow;
+  @apply flex items-start flex-grow relative;
   padding: 14px 7px 0 0;
+  img {
+    @apply absolute top-[14px] left-0;
+    flex: none;
+  }
   .weather-text {
     @apply flex-grow;
     p {
-      @apply font-semibold flex justify-center;
+      @apply font-semibold flex justify-end;
       font-size: 80px;
       letter-spacing: -1.6px;
       line-height: normal;
@@ -427,26 +431,16 @@
       }
     }
     dl {
-      @apply flex justify-center items-center;
+      @apply flex flex-col justify-center items-end;
       margin-top: 3px;
       font-size: 15px;
-      gap: 5px;
-      line-height: 160%;
+      line-height: 20px;
       dt {
         @apply font-semibold flex;
         white-space: nowrap;
-        &:after {
-          content: '';
-          display: inline-flex;
-          margin-left: 5px;
-          margin-top: 4px;
-
-          width: 1px;
-          height: 16px;
-          background-color: #757575;
-        }
       }
       dd {
+        @apply flex items-center justify-end gap-1;
         white-space: nowrap;
         b {
           font-weight: 600;

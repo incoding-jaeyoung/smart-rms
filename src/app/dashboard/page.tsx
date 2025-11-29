@@ -122,18 +122,20 @@ export default function DashboardPage() {
               <span className="ico-arrow"></span>
             </div>
             <div className="weather-info">
-              <Image src="/icons/ico-weather-01.png" alt="흐림" width={116} height={116} />
+              <Image src="/icons/ico-weather-01.png" alt="흐림" width={110} height={110} />
               <div className="weather-text">
                 <p>
                   24<span>°</span>
                 </p>
                 <dl>
-                  <dt>흐림</dt>
+                  <dt>구름많고 빗방울 또는 눈날림</dt>
                   <dd>
-                    최고 <b>26°</b>
-                  </dd>
-                  <dd>
-                    최저 <b>20°</b>
+                    <span>
+                      최고 <b>26°</b>
+                    </span>
+                    <span>
+                      최저 <b>20°</b>
+                    </span>
                   </dd>
                 </dl>
               </div>
