@@ -21,6 +21,8 @@ export default function JoinUser2({ type, open, onClose }: JoinUser2Props) {
   const [email, setEmail] = useState('');
   const [code, setCode] = useState('');
   const [sns, setSns] = useState('hongkildong@gmail.com');
+  const [idHelp, setIdHelp] = useState<string>('');
+  const [passwordHelp, setPasswordHelp] = useState<string>('');
 
   const handleSubmit = (values: unknown) => {
     console.log('Form values:', values);
@@ -56,11 +58,22 @@ export default function JoinUser2({ type, open, onClose }: JoinUser2Props) {
           className="login-input no-margin"
         >
           <div className="flex flex-row justify-center">
-            <Form.Item name="num" className="login-input w-288" help="사용가능한 아이디입니다.">
+            <Form.Item name="num" className="login-input w-288" help={idHelp || undefined}>
               <Input
                 placeholder="아이디"
                 value={id}
-                onChange={(e) => setid(e.target.value)}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  setid(value);
+                  // help 메시지 동적 변경 예시
+                  if (value.length > 0 && value.length < 4) {
+                    setIdHelp('아이디는 최소 4자 이상이어야 합니다.');
+                  } else if (value.length >= 4) {
+                    setIdHelp('사용가능한 아이디입니다.');
+                  } else {
+                    setIdHelp('');
+                  }
+                }}
                 className="success"
                 suffix={<></>}
               />
@@ -73,20 +86,37 @@ export default function JoinUser2({ type, open, onClose }: JoinUser2Props) {
           <Form.Item
             name="password"
             // validateStatus="error"
-            help="최대 13자, 대문자 포함, 연속된 숫자 3자 이상 금지, 특수기호 !@#$%^&*()_+-="
+            help={
+              passwordHelp ||
+              '최소8자최대16자, 대문자포함, 연속된숫자3자이상금지, 특수기호!@#$%^&*()_+-='
+            }
             className="login-input "
           >
             <Input.Password
               placeholder="비밀번호 입력"
               size="large"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {
+                const value = e.target.value;
+                setPassword(value);
+                // help 메시지 동적 변경 예시
+                if (value.length > 0 && value.length < 8) {
+                  setPasswordHelp('비밀번호는 최소 8자 이상이어야 합니다.');
+                } else if (value.length >= 8 && !/[A-Z]/.test(value)) {
+                  setPasswordHelp('대문자를 포함해야 합니다.');
+                } else if (value.length >= 8 && /[A-Z]/.test(value)) {
+                  setPasswordHelp('');
+                } else {
+                  setPasswordHelp('');
+                }
+              }}
               suffix={
                 password && (
                   <button
                     type="button"
                     onClick={() => {
                       setPassword('');
+                      setPasswordHelp('');
                       form.resetFields(['password']);
                     }}
                   >

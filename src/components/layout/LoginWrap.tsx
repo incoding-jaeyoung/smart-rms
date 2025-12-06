@@ -62,7 +62,7 @@ export default function Login({ handleFindAccount }: LoginProps) {
               <Form.Item
                 name="password"
                 // validateStatus="error"
-                // help="비밀번호를 입력해주세요."
+                help="최소8자최대16자, 대문자포함, 연속된숫자3자이상금지, 특수기호!@#$%^&*()_+-="
                 className="login-input pw-input !mt-1"
               >
                 <Input.Password
