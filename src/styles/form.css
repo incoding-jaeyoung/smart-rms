@@ -19,7 +19,6 @@
 /* form 스타일 */
 .ant-form-item {
   margin-bottom: 0px;
-  margin-top: 2px;
 }
 /* .ant-input,
 .ant-input-password,
@@ -565,4 +564,24 @@ textarea.bbs-form {
 
 .ant-form-item-explain-success {
   white-space: nowrap;
+}
+.join-user-date-picker {
+  height: 45px;
+  width: 100%;
+  border-radius: 20px;
+  color: #575757;
+  background: #fff0;
+  border-radius: 25px;
+  padding: 0 15px;
+  font-size: 16px;
+  font-weight: 400;
+  box-shadow: 1px 4px 4px #0003 !important;
+  input {
+    &::placeholder {
+      color: #575757 !important;
+    }
+  }
+  .ant-picker-suffix {
+    color: #575757 !important;
+  }
 }

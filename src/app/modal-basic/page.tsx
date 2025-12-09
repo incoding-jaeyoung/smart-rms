@@ -6,7 +6,9 @@ import ModalDefault from '@/components/popup/ModalDefault';
 import FindAccount from '@/components/popup/FindAccount';
 import JoinUser from '@/components/popup/JoinUser';
 import JoinUser2 from '@/components/popup/JoinUser2';
-import JoinAgree from '@/components/popup/JoinAgree';
+import TermsAgree from '@/components/popup/TermsAgree';
+import PrivacyAgree from '@/components/popup/PrivacyAgree';
+import ServiceAlarmAgree from '@/components/popup/ServiceAlarmAgree';
 import SearchSuccess from '@/components/popup/SearchSuccess';
 import PwChangeSuccess from '@/components/popup/PwChangeSuccess';
 
@@ -18,7 +20,9 @@ export default function ModalBasicPage() {
 
   const [joinUserModal, setJoinUserModal] = useState(false);
   const [joinUserModal2, setJoinUserModal2] = useState('');
-  const [joinAgree, setJoinAgree] = useState('');
+  const [termsAgree, setTermsAgree] = useState(false);
+  const [privacyAgree, setPrivacyAgree] = useState(false);
+  const [serviceAlarmAgree, setServiceAlarmAgree] = useState(false);
 
   const [searchSuccessModal, setSearchSuccessModal] = useState(false);
   const [pwChangeSuccessModal, setPwChangeSuccessModal] = useState(false);
@@ -80,19 +84,22 @@ export default function ModalBasicPage() {
         </div>
         <div className="p-6 bg-white border rounded-lg shadow-sm">
           <h3 className="font-semibold mb-2">회원가입</h3>
-          <p className="text-sm text-gray-600 mb-4">
-            이메일 가입 & sns 가입 공통 - 이용약관 및 개인정보 처리방침 동의
-          </p>
-          <Button type="primary" onClick={() => setJoinAgree('tearms')} block>
+          <p className="text-sm text-gray-600 mb-4">서비스 이용약관 동의</p>
+          <Button type="primary" onClick={() => setTermsAgree(true)} block>
             Open Modal
           </Button>
         </div>
         <div className="p-6 bg-white border rounded-lg shadow-sm">
           <h3 className="font-semibold mb-2">회원가입</h3>
-          <p className="text-sm text-gray-600 mb-4">
-            이메일 가입 & sns 가입 공통 - 서비스알림 수신 동의
-          </p>
-          <Button type="primary" onClick={() => setJoinAgree('alarm')} block>
+          <p className="text-sm text-gray-600 mb-4">개인정보 처리방침 동의</p>
+          <Button type="primary" onClick={() => setPrivacyAgree(true)} block>
+            Open Modal
+          </Button>
+        </div>
+        <div className="p-6 bg-white border rounded-lg shadow-sm">
+          <h3 className="font-semibold mb-2">회원가입</h3>
+          <p className="text-sm text-gray-600 mb-4">서비스 알람 수신 동의</p>
+          <Button type="primary" onClick={() => setServiceAlarmAgree(true)} block>
             Open Modal
           </Button>
         </div>
@@ -107,7 +114,9 @@ export default function ModalBasicPage() {
         open={!!joinUserModal2}
         onClose={() => setJoinUserModal2('')}
       />
-      <JoinAgree type={joinAgree} open={!!joinAgree} onClose={() => setJoinAgree('')} />
+      <TermsAgree open={termsAgree} onClose={() => setTermsAgree(false)} />
+      <PrivacyAgree open={privacyAgree} onClose={() => setPrivacyAgree(false)} />
+      <ServiceAlarmAgree open={serviceAlarmAgree} onClose={() => setServiceAlarmAgree(false)} />
       <SearchSuccess open={searchSuccessModal} onClose={() => setSearchSuccessModal(false)} />
       <PwChangeSuccess open={pwChangeSuccessModal} onClose={() => setPwChangeSuccessModal(false)} />
     </div>

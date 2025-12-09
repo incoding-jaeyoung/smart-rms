@@ -5,7 +5,9 @@ import Login from '@/components/layout/LoginWrap';
 import FindAccount from '@/components/popup/FindAccount';
 import JoinUser from '@/components/popup/JoinUser';
 import JoinUser2 from '@/components/popup/JoinUser2';
-import JoinAgree from '@/components/popup/JoinAgree';
+import TermsAgree from '@/components/popup/TermsAgree';
+import PrivacyAgree from '@/components/popup/PrivacyAgree';
+import ServiceAlarmAgree from '@/components/popup/ServiceAlarmAgree';
 import SearchSuccess from '@/components/popup/SearchSuccess';
 import PwChangeSuccess from '@/components/popup/PwChangeSuccess';
 import { Button } from 'antd';
@@ -17,8 +19,9 @@ type PopupType =
   | 'pwChangeSuccess'
   | 'JoinUser1'
   | 'JoinUser2'
-  | 'JoinAgree1'
-  | 'JoinAgree2';
+  | 'TermsAgree'
+  | 'PrivacyAgree'
+  | 'ServiceAlarmAgree';
 
 export default function LoginPage() {
   const [currentPopup, setCurrentPopup] = useState<PopupType | null>(null);
@@ -41,12 +44,16 @@ export default function LoginPage() {
     setCurrentPopup('JoinUser2');
   };
 
-  const handleJoinAgree1 = () => {
-    setCurrentPopup('JoinAgree1');
+  const handleTermsAgree = () => {
+    setCurrentPopup('TermsAgree');
   };
 
-  const handleJoinAgree2 = () => {
-    setCurrentPopup('JoinAgree2');
+  const handlePrivacyAgree = () => {
+    setCurrentPopup('PrivacyAgree');
+  };
+
+  const handleServiceAlarmAgree = () => {
+    setCurrentPopup('ServiceAlarmAgree');
   };
 
   const handleSearchSuccess = () => {
@@ -71,11 +78,10 @@ export default function LoginPage() {
       {currentPopup === 'JoinUser2' && (
         <JoinUser2 type="sns" open={true} onClose={handleBackToLogin} />
       )}
-      {currentPopup === 'JoinAgree1' && (
-        <JoinAgree type="tearms" open={true} onClose={handleBackToLogin} />
-      )}
-      {currentPopup === 'JoinAgree2' && (
-        <JoinAgree type="alarm" open={true} onClose={handleBackToLogin} />
+      {currentPopup === 'TermsAgree' && <TermsAgree open={true} onClose={handleBackToLogin} />}
+      {currentPopup === 'PrivacyAgree' && <PrivacyAgree open={true} onClose={handleBackToLogin} />}
+      {currentPopup === 'ServiceAlarmAgree' && (
+        <ServiceAlarmAgree open={true} onClose={handleBackToLogin} />
       )}
       {currentPopup === 'searchSuccess' && (
         <SearchSuccess open={true} onClose={handleBackToLogin} />
@@ -96,11 +102,14 @@ export default function LoginPage() {
         <Button type="primary" onClick={handleJoinUser2}>
           회원가입 - sns
         </Button>
-        <Button type="primary" onClick={handleJoinAgree1}>
-          회원가입 - 이용약관
+        <Button type="primary" onClick={handleTermsAgree}>
+          서비스 이용약관 동의
         </Button>
-        <Button type="primary" onClick={handleJoinAgree2}>
-          회원가입 - 서비스 알람
+        <Button type="primary" onClick={handlePrivacyAgree}>
+          개인정보 처리방침 동의
+        </Button>
+        <Button type="primary" onClick={handleServiceAlarmAgree}>
+          서비스 알람 수신 동의
         </Button>
         <Button type="primary" onClick={handleSearchSuccess}>
           아이디 찾기 결과
