@@ -105,9 +105,9 @@ export default function LoginPage() {
         <Button type="primary" onClick={handleTermsAgree}>
           서비스 이용약관 동의
         </Button>
-        <Button type="primary" onClick={handlePrivacyAgree}>
+        {/* <Button type="primary" onClick={handlePrivacyAgree}>
           개인정보 처리방침 동의
-        </Button>
+        </Button> */}
         <Button type="primary" onClick={handleServiceAlarmAgree}>
           서비스 알람 수신 동의
         </Button>

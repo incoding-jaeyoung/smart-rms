@@ -89,13 +89,13 @@ export default function ModalBasicPage() {
             Open Modal
           </Button>
         </div>
-        <div className="p-6 bg-white border rounded-lg shadow-sm">
+        {/* <div className="p-6 bg-white border rounded-lg shadow-sm">
           <h3 className="font-semibold mb-2">회원가입</h3>
           <p className="text-sm text-gray-600 mb-4">개인정보 처리방침 동의</p>
           <Button type="primary" onClick={() => setPrivacyAgree(true)} block>
             Open Modal
           </Button>
-        </div>
+        </div> */}
         <div className="p-6 bg-white border rounded-lg shadow-sm">
           <h3 className="font-semibold mb-2">회원가입</h3>
           <p className="text-sm text-gray-600 mb-4">서비스 알람 수신 동의</p>
