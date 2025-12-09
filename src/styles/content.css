@@ -1304,3 +1304,8 @@
   margin: 20px 0;
   background-color: #757575;
 }
+
+.ant-picker.ant-picker-disabled {
+  background-color: #cccc !important;
+  border-color: #fff !important;
+}

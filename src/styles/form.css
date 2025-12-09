@@ -561,7 +561,16 @@ textarea.bbs-form {
     border: 1px solid #000 !important;
   }
 }
-
+.ant-picker-cell.ant-picker-cell-selected {
+  .ant-picker-cell-inner {
+    background-color: #000 !important;
+  }
+}
+.ant-picker-footer {
+  a {
+    color: #000 !important;
+  }
+}
 .ant-form-item-explain-success {
   white-space: nowrap;
 }

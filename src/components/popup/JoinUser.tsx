@@ -67,6 +67,16 @@ export default function JoinUser({ open, onClose }: JoinUserProps) {
                 suffix={<></>}
               />
             </Form.Item>
+            <Form.Item>
+              <Input
+                placeholder="대표자명(필수)"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className=""
+                suffix={<></>}
+                disabled={true}
+              />
+            </Form.Item>
             <Form.Item name="date">
               <DatePicker
                 placeholder="개업일자(필수)"
@@ -75,6 +85,17 @@ export default function JoinUser({ open, onClose }: JoinUserProps) {
                 format="YYYY.MM.DD"
                 className="join-user-date-picker"
                 size="large"
+              />
+            </Form.Item>
+            <Form.Item name="date">
+              <DatePicker
+                placeholder="개업일자(필수)"
+                value={date}
+                onChange={(value) => setDate(value)}
+                format="YYYY.MM.DD"
+                className="join-user-date-picker"
+                size="large"
+                disabled={true}
               />
             </Form.Item>
             <Button
