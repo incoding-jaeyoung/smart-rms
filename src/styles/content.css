@@ -1148,13 +1148,12 @@
       h2 {
         font-size: 18px;
         font-weight: 600;
-        width: 130px;
       }
       p {
         @apply flex items-center gap-1;
         font-size: 14px;
         font-weight: 600;
-        margin-left: 5px;
+        margin-left: 10px;
       }
       button {
         @apply flex items-center justify-center ml-auto;
