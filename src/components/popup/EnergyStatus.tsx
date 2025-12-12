@@ -71,7 +71,7 @@ export default function EnergyStatusPopup({
                 <div className="rtu-item-header">
                   <h2>전령량계 (RTU1)</h2>
                   <p>
-                    <span className="status ico-fine"></span>
+                    <span className="status ico-normal"></span>
                     정상 작동중
                   </p>
                   <button type="button" className="btn-detail">
