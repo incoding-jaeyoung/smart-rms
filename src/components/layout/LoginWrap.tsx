@@ -159,8 +159,9 @@ export default function Login({ handleFindAccount }: LoginProps) {
             부담 없이 이용할 수 있으며, 클라우드 기반의 확장성과 IoT·AI 기술을 결합한 실시간 물류
             최적화를 경험할 수 있습니다.
           </p>
+          <p className="mt-2">Copyright © 2025 RMS PLATFORM. All Rights Reserved.</p>
         </div>
-        <p className="flex items-center gap-1">
+        <p className="flex gap-1">
           <Image src="/images/img-company-01.png" alt="한국산업단지공단" width={136} height={34} />
           <Image src="/images/img-company-02.png" alt="산업통상부" width={144} height={32} />
         </p>

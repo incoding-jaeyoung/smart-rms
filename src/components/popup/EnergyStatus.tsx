@@ -263,11 +263,11 @@ export default function EnergyStatusPopup({
                   </div>
                   {activeRangeCarbon === 'week' && (
                     <div className="range-date-group">
-                      <button type="button" className="range-date-btn">
+                      <button type="button" className="range-date-btn" disabled={true}>
                         <Image src="/icons/ico-date-prev.svg" alt="" width={10} height={15} />
                       </button>
-                      <span>09.21 - 09.27</span>
-                      <button type="button" className="range-date-btn">
+                      <span>09.21 - 09.28</span>
+                      <button type="button" className="range-date-btn" disabled={true}>
                         <Image src="/icons/ico-date-next.svg" alt="" width={10} height={15} />
                       </button>
                     </div>

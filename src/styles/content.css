@@ -49,7 +49,7 @@
     }
   }
   .login-footer {
-    @apply absolute flex justify-between items-center bottom-0 left-0 w-full px-25 py-10 text-white font-medium text-xs;
+    @apply absolute flex justify-between items-start bottom-0 left-0 w-full px-25 py-10 text-white font-medium text-xs;
     p {
       line-height: 160%;
     }
@@ -358,6 +358,13 @@
           background: rgba(230, 230, 230, 0.9);
         }
       }
+      /* &.error {
+        outline: 2px solid #d50c1d;
+        &:before,
+        &:after {
+          display: none;
+        }
+      } */
       &.active {
         border: none;
         background: linear-gradient(180deg, rgba(0, 0, 0, 0.65) 20%, #777 100%);
@@ -1290,6 +1297,9 @@
         @apply flex items-center justify-center;
         height: 20px;
         width: 20px;
+        &:disabled {
+          opacity: 0.2;
+        }
       }
     }
   }

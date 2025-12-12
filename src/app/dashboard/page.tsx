@@ -298,7 +298,7 @@ export default function DashboardPage() {
           </button>
           <button
             type="button"
-            className={`glass ${currentPopup === 'power' ? 'active' : ''}`}
+            className={`glass ${currentPopup === 'power' ? 'active' : ''}  error`}
             onClick={() => handleOpenPopup('power')}
           >
             <div className="btn-header">

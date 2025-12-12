@@ -71,14 +71,14 @@ export default function EnergyDetailPopup({ open, onCloseAction }: EnergyDetailP
               <div className="rtu-item">
                 <div className="rtu-item-header">
                   <h2 className="!w-auto">장비별 전력량계</h2>
-                  <p className="!ml-2">
+                  <div className="!ml-2">
                     <RangePicker
                       className="range-picker"
                       format="YYYY.MM.DD"
                       defaultValue={[dayjs(), dayjs()]}
                       placeholder={['시작일', '종료일']}
                     />
-                  </p>
+                  </div>
                   <button type="button" className="btn-detail">
                     엑셀다운로드
                     <Image src="/icons/ico-download.svg" alt="" width={14} height={14} />
@@ -353,14 +353,14 @@ export default function EnergyDetailPopup({ open, onCloseAction }: EnergyDetailP
               <div className="rtu-item">
                 <div className="rtu-item-header">
                   <h2 className="!w-auto">전력/탄소 배출량 집계</h2>
-                  <p className="!ml-2">
+                  <div className="!ml-2">
                     <RangePicker
                       className="range-picker"
                       format="YYYY.MM.DD"
                       defaultValue={[dayjs(), dayjs()]}
                       placeholder={['시작일', '종료일']}
                     />
-                  </p>
+                  </div>
                   <button type="button" className="btn-detail">
                     엑셀다운로드
                     <Image src="/icons/ico-download.svg" alt="" width={14} height={14} />
