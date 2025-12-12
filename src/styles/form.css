@@ -537,7 +537,14 @@ textarea.bbs-form {
     input {
       font-size: 13px;
       font-weight: 400;
+      color: #000 !important;
+      font-weight: 400;
+      font-family: 'Pretendard', 'Inter', sans-serif !important;
     }
+  }
+  .ant-picker-suffix,
+  .ant-picker-separator {
+    color: #000 !important;
   }
   .ant-picker-range-separator {
     padding: 0;
