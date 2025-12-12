@@ -275,7 +275,7 @@
 
 .popup-default-wrap {
   align-items: flex-start !important;
-  top: 180px !important;
+  top: 150px !important;
   .ant-modal-content {
     margin-left: 78px;
   }
