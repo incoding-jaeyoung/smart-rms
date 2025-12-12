@@ -426,7 +426,7 @@
 }
 
 .weather-info {
-  @apply flex items-start flex-grow relative;
+  @apply flex items-start flex-grow relative w-full;
   padding: 14px 7px 0 0;
   img {
     @apply absolute top-[14px] left-0;
@@ -437,6 +437,9 @@
     p {
       @apply font-semibold flex justify-end;
       font-size: 80px;
+      height: 95px;
+      overflow: hidden;
+      border: 1px solid red;
       letter-spacing: -1.6px;
       line-height: normal;
 
@@ -465,7 +468,7 @@
   }
 }
 .dashboard-btn-content {
-  @apply flex gap-1 pt-5 justify-center;
+  @apply flex gap-1 pt-5 justify-center w-full;
   dl {
     @apply flex flex-col items-center justify-center gap-2.5 flex-grow;
     dt {

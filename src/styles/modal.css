@@ -233,7 +233,7 @@
   box-shadow: 1px 7px 7px 8px rgba(0, 0, 0, 0.2);
   border-radius: 20px !important;
   padding: 30px 50px;
-  margin-left: 190px;
+  margin-left: 208px;
   .ant-modal-confirm-body-wrapper {
     @apply flex flex-col;
     &:before,
@@ -276,7 +276,10 @@
 .popup-default-wrap {
   align-items: flex-start !important;
   top: 180px !important;
-  margin-left: 78px;
+  .ant-modal-content {
+    margin-left: 78px;
+  }
+  /* margin-left: 78px; */
 }
 .ant-modal.popup-default {
   /* @apply bg-white; */

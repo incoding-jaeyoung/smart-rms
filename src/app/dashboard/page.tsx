@@ -148,7 +148,7 @@ export default function DashboardPage() {
           >
             <div className="btn-header">
               <p>
-                <span className="status ico-fine"></span>정상 작동중
+                <span className="status ico-normal"></span>정상 작동중
               </p>
               <span className="ico-arrow"></span>
             </div>
