@@ -42,19 +42,19 @@ export default function WeatherInfo({ open, onCloseAction }: WeatherInfoProps) {
 
   const todaySlides = useMemo(
     () => [
-      { label: '지금', chance: '20%', temp: '24°', tempAfter: '25°' },
-      { label: '오후6시', chance: '', temp: '24°', tempAfter: '25°' },
-      { label: '오후7시', chance: '20%', temp: '24°', tempAfter: '25°' },
-      { label: '오후8시', chance: '20%', temp: '24°', tempAfter: '25°' },
-      { label: '오후9시', chance: '20%', temp: '24°', tempAfter: '25°' },
-      { label: '오후10시', chance: '20%', temp: '24°', tempAfter: '25°' },
-      { label: '오후11시', chance: '20%', temp: '24°', tempAfter: '25°' },
-      { label: '오전12시', chance: '20%', temp: '24°', tempAfter: '25°' },
-      { label: '오전1시', chance: '20%', temp: '24°', tempAfter: '25°' },
-      { label: '오전2시', chance: '20%', temp: '24°', tempAfter: '25°' },
-      { label: '오전3시', chance: '20%', temp: '24°', tempAfter: '25°' },
-      { label: '오전4시', chance: '20%', temp: '24°', tempAfter: '25°' },
-      { label: '오전5시', chance: '20%', temp: '24°', tempAfter: '25°' },
+      { label: '지금', chance: '20%', temp: '24°' },
+      { label: '오후6시', chance: '20%', temp: '24°' },
+      { label: '오후7시', chance: '20%', temp: '24°' },
+      { label: '오후8시', chance: '20%', temp: '24°' },
+      { label: '오후9시', chance: '20%', temp: '24°' },
+      { label: '오후10시', chance: '20%', temp: '24°' },
+      { label: '오후11시', chance: '20%', temp: '24°' },
+      { label: '오전12시', chance: '20%', temp: '24°' },
+      { label: '오전1시', chance: '20%', temp: '24°' },
+      { label: '오전2시', chance: '20%', temp: '24°' },
+      { label: '오전3시', chance: '20%', temp: '24°' },
+      { label: '오전4시', chance: '20%', temp: '24°' },
+      { label: '오전5시', chance: '20%', temp: '24°' },
     ],
     []
   );
@@ -200,11 +200,7 @@ export default function WeatherInfo({ open, onCloseAction }: WeatherInfoProps) {
                           />
                           <span>{slide.chance}</span>
                         </p>
-                        <p className="temp">
-                          {slide.temp}
-                          <span></span>
-                          {slide.tempAfter}
-                        </p>
+                        <p className="temp">{slide.temp}</p>
                       </div>
                     </SwiperSlide>
                   ))}

@@ -411,6 +411,7 @@ export default function DashboardPage() {
           </button>
         </div>
       </div>
+      <p className="copyright">Copyright © 2025 RMS PLATFORM. All Rights Reserved.</p>
       <WeatherInfo open={currentPopup === 'weather'} onCloseAction={handleClosePopup} />
       <EnergyStatusPopup
         open={currentPopup === 'power'}
