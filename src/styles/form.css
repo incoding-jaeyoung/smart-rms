@@ -489,12 +489,35 @@
     background-position: 13px center;
   }
 }
-input:-webkit-autofill {
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
   -webkit-text-fill-color: #171a1c !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
   background: transparent !important;
   border: none !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+input:autofill,
+input:autofill:hover,
+input:autofill:focus,
+input:autofill:active {
+  -webkit-text-fill-color: #171a1c !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  border: none !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+input:-internal-autofill-selected {
+  -webkit-text-fill-color: #171a1c !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  border: none !important;
+  transition: background-color 5000s ease-in-out 0s;
 }
 input[type='text'].bbs-form {
   @apply text-xl;
