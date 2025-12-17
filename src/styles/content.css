@@ -324,6 +324,7 @@
 .dashboard-content {
   @apply flex justify-between relative z-10;
   width: 1920px;
+  min-height: 887px;
   margin: 0 auto;
   padding: 108px 70px 0 70px;
   .contents-left {
